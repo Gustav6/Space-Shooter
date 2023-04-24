@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts;
+using Space_Shooter.Sciprts.Heritage;
 
 namespace Space_Shooter
 {
@@ -13,6 +14,8 @@ namespace Space_Shooter
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = 2560;
+            _graphics.PreferredBackBufferHeight = 1440;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -28,7 +31,11 @@ namespace Space_Shooter
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Data.playerTexture = Content.Load<Texture2D>("");
+            Data.playerTexture = Content.Load<Texture2D>("Player");
+            //Data.enemyTexture = Content.Load<Texture2D>("");
+            //Data.projectileTexture = Content.Load<Texture2D>("");
+
+            Data.gameObjects.Add(new Player(new Vector2(200, 200)));
 
             // TODO: use this.Content to load your game content here
         }
@@ -48,6 +55,15 @@ namespace Space_Shooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            _spriteBatch.Begin();
+
+            foreach (GameObject gameObjects in Data.gameObjects)
+            {
+                gameObjects.Draw(_spriteBatch);
+            }
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

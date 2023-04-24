@@ -12,6 +12,10 @@ namespace Space_Shooter.Sciprts
     {
         public static List<GameObject> gameObjects = new List<GameObject>();
 
+        public static Random rng = new Random();
+
         public static Texture2D playerTexture;
+        public static Texture2D enemyTexture;
+        public static Texture2D projectileTexture;
     }
 }
