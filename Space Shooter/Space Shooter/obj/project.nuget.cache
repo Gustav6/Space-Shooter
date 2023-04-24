@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ys4eHAMu0pAUt+P0U4AS2SN8BSweYlAshbCxdOcAf+S5Qnh3OBTityyC7QCaSh896UNFrknu6vLL1uYjXBjCsA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}
