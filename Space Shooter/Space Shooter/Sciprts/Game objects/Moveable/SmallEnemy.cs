@@ -9,11 +9,9 @@ using Space_Shooter.Sciprts.Heritage;
 
 namespace Space_Shooter.Sciprts.Moveable
 {
-    internal class Enemy : Characters
+    internal class SmallEnemy : Enemies
     {
-        private float contactDamage = 15;
-
-        public Enemy(Vector2 startPostion)
+        public SmallEnemy(Vector2 startPostion)
         {
             moveSpeed = 5;
             health = 50;
@@ -30,14 +28,9 @@ namespace Space_Shooter.Sciprts.Moveable
             base.Draw(_spriteBatch);
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            base.Update();
-        }
-
-        public void Move()
-        {
-
+            base.Update(gameTime);
         }
     }
 }

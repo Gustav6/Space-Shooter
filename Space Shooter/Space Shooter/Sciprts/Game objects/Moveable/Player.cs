@@ -15,7 +15,7 @@ namespace Space_Shooter.Sciprts.Moveable
         public Player(Vector2 startPostion)
         {
             health = 100;
-            moveSpeed = 3;
+            moveSpeed = 300;
             postion = startPostion;
             velocity = Vector2.Zero;
             color = Color.White;
@@ -28,24 +28,38 @@ namespace Space_Shooter.Sciprts.Moveable
         {
             base.Draw(_spriteBatch);
         }
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            base.Update();
+            Move(gameTime);
+            base.Update(gameTime);
         }
 
-        public void MoveRight()
+        public void Move(GameTime gameTime)
         {
             if (Input.IsPressed(Keys.Right))
             {
-                velocity.X = moveSpeed;
+                velocity.X = moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-        }
-
-        public void MoveLeft()
-        {
-            if (Input.IsPressed(Keys.Left))
+            else if (Input.IsPressed(Keys.Left))
             {
-                velocity.X = -moveSpeed;
+                velocity.X = -moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else
+            {
+                velocity.X = 0;
+            }
+
+            if (Input.IsPressed(Keys.Up))
+            {
+                velocity.Y = -moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else if (Input.IsPressed(Keys.Down))
+            {
+                velocity.Y = moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else
+            {
+                velocity.Y = 0;
             }
         }
     }

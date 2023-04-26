@@ -12,9 +12,10 @@ namespace Space_Shooter.Sciprts.Heritage
         public Vector2 velocity;
         public float moveSpeed; 
 
-        public virtual void Update()
+        public override void Update(GameTime gameTime)
         {
-            postion += velocity * moveSpeed;
+            postion += velocity;
+            base.Update(gameTime);
         }
     }
 }

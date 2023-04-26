@@ -19,6 +19,11 @@ namespace Space_Shooter.Sciprts.Heritage
 
         public bool isRemoved;
 
+        public virtual void Update(GameTime gameTime)
+        {
+
+        }
+
         public virtual void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(texture, postion, color);

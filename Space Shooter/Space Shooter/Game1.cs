@@ -34,7 +34,7 @@ namespace Space_Shooter
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Data.gameObjects.Add(new Player(new Vector2(200, 200)));
+            Data.gameObjects.Add(new Player(new Vector2(500, 500)));
         }
 
         protected override void Update(GameTime gameTime)
@@ -44,20 +44,9 @@ namespace Space_Shooter
 
             Input.GetState();
 
-            foreach (Movable m in Data.gameObjects)
+            foreach (GameObject gameObject in Data.gameObjects)
             {
-                m.Update();
-
-                if (m is Player p)
-                {
-                    p.MoveRight();
-                    p.MoveLeft();
-                }
-
-                if (m is Enemy e)
-                {
-                    e.Move();
-                }
+                gameObject.Update(gameTime);
             }
 
             base.Update(gameTime);
