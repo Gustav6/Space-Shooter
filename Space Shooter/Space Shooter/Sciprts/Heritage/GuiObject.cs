@@ -8,6 +8,9 @@ namespace Space_Shooter.Sciprts.Heritage
 {
     abstract class GuiObject : GameObject
     {
+        public virtual void Update()
+        {
 
+        }
     }
 }

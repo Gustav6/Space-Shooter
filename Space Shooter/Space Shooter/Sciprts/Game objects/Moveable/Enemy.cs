@@ -7,29 +7,37 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Space_Shooter.Sciprts.Heritage;
 
-namespace Space_Shooter.Sciprts
+namespace Space_Shooter.Sciprts.Moveable
 {
-    internal class Player : Characters
+    internal class Enemy : Characters
     {
-        public Player(Vector2 startPostion)
+        private float contactDamage = 15;
+
+        public Enemy(Vector2 startPostion)
         {
-            health = 100;
-            speed = 7;
+            moveSpeed = 5;
+            health = 50;
             postion = startPostion;
             velocity = Vector2.Zero;
             color = Color.White;
             isRemoved = false;
             hitbox = new Rectangle(0, 0, 64, 64);
-            texture = Data.playerTexture;
+            texture = Data.enemyTexture;
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
         {
             base.Draw(_spriteBatch);
         }
+
         public override void Update()
         {
             base.Update();
+        }
+
+        public void Move()
+        {
+
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Space_Shooter.Sciprts.Heritage;
 
-namespace Space_Shooter.Sciprts
+namespace Space_Shooter.Sciprts.Moveable
 {
     internal class Projectiles : Movable
     {
@@ -15,7 +15,7 @@ namespace Space_Shooter.Sciprts
 
         public Projectiles()
         {
-            speed = 15;
+            moveSpeed = 15;
             postion = Vector2.Zero;
             velocity = Vector2.Zero;
             color = Color.White;

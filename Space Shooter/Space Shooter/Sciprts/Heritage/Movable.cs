@@ -10,6 +10,11 @@ namespace Space_Shooter.Sciprts.Heritage
     abstract class Movable : GameObject
     {
         public Vector2 velocity;
-        public float speed;
+        public float moveSpeed; 
+
+        public virtual void Update()
+        {
+            postion += velocity * moveSpeed;
+        }
     }
 }

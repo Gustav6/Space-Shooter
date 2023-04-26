@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts;
 using Space_Shooter.Sciprts.Heritage;
+using Space_Shooter.Sciprts.Moveable;
 
 namespace Space_Shooter
 {
@@ -14,15 +15,17 @@ namespace Space_Shooter
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 2560;
-            _graphics.PreferredBackBufferHeight = 1440;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Data.playerTexture = Content.Load<Texture2D>("Player");
+            //Data.enemyTexture = Content.Load<Texture2D>("");
+            //Data.projectileTexture = Content.Load<Texture2D>("");
 
             base.Initialize();
         }
@@ -31,13 +34,7 @@ namespace Space_Shooter
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Data.playerTexture = Content.Load<Texture2D>("Player");
-            //Data.enemyTexture = Content.Load<Texture2D>("");
-            //Data.projectileTexture = Content.Load<Texture2D>("");
-
             Data.gameObjects.Add(new Player(new Vector2(200, 200)));
-
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -45,16 +42,30 @@ namespace Space_Shooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            Input.GetState();
+
+            foreach (Movable m in Data.gameObjects)
+            {
+                m.Update();
+
+                if (m is Player p)
+                {
+                    p.MoveRight();
+                    p.MoveLeft();
+                }
+
+                if (m is Enemy e)
+                {
+                    e.Move();
+                }
+            }
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
 

@@ -23,10 +23,5 @@ namespace Space_Shooter.Sciprts.Heritage
         {
             _spriteBatch.Draw(texture, postion, color);
         }
-
-        public virtual void Update()
-        {
-            
-        }
     }
 }
