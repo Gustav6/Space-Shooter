@@ -50,3 +50,8 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoo
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.pdb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.genruntimeconfig.cache
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\ref\Space Shooter.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\orangeenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\redenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\whiteenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Projectile.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Font.xnb

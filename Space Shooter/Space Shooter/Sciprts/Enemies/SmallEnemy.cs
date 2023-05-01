@@ -7,27 +7,32 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Space_Shooter.Sciprts.Heritage;
 
-namespace Space_Shooter.Sciprts.Moveable
+namespace Space_Shooter.Sciprts.Enemies
 {
-    internal class Projectiles : Movable
+    internal class SmallEnemy : Enemies
     {
-        private float damage = 25;
-
-        public Projectiles()
+        public SmallEnemy(Vector2 startPostion)
         {
-            moveSpeed = 15;
-            postion = Vector2.Zero;
+            moveSpeed = 200;
+            health = 50;
+            postion = startPostion;
             velocity = Vector2.Zero;
-            color = Color.White;
             isRemoved = false;
-            hitbox = new Rectangle(0, 0, 16, 16);
-            texture = Data.projectileTexture;
+            hitbox = new Rectangle(0, 0, 64, 64);
+
+            texture = Data.enemyTextureList[0];
+            color = Color.White;
+            rotation = MathHelper.ToRadians(0);
+            scale = 0.3f;
+            sourceRectangle = new Rectangle(0, 0, 132, 128);
+            layerDeapth = 1;
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
         {
             base.Draw(_spriteBatch);
         }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

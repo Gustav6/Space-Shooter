@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Space_Shooter.Sciprts.Heritage
+namespace Space_Shooter.Sciprts.Gui
 {
-    abstract class Enemies : Characters
+    internal class Button : GuiObject
     {
-        public float contactDamage = 15;
     }
 }

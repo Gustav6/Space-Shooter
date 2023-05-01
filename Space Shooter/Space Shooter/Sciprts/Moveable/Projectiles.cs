@@ -3,31 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Space_Shooter.Sciprts.Heritage;
 
 namespace Space_Shooter.Sciprts.Moveable
 {
-    internal class SmallEnemy : Enemies
+    internal class Projectiles : Movable
     {
-        public SmallEnemy(Vector2 startPostion)
+        public float damage = 25;
+
+        public Projectiles(Vector2 startPostion)
         {
-            moveSpeed = 5;
-            health = 50;
+            moveSpeed = 0;
             postion = startPostion;
             velocity = Vector2.Zero;
-            color = Color.White;
             isRemoved = false;
-            hitbox = new Rectangle(0, 0, 64, 64);
-            texture = Data.enemyTexture;
+
+            texture = Data.projectileTexture;
+            color = Color.White;
+            rotation = MathHelper.ToRadians(0);
+            scale = 0.3f;
+            sourceRectangle = new Rectangle(50, 100, 75, 60);
+            layerDeapth = 1;
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
         {
             base.Draw(_spriteBatch);
         }
-
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

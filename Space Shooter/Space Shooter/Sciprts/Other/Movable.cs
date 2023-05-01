@@ -14,7 +14,12 @@ namespace Space_Shooter.Sciprts.Heritage
 
         public override void Update(GameTime gameTime)
         {
-            postion += velocity;
+            if (velocity != Vector2.Zero)
+            {
+                velocity.Normalize();
+            }
+            postion += velocity * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            hitbox.Location = postion.ToPoint();
             base.Update(gameTime);
         }
     }

@@ -10,9 +10,18 @@ namespace Space_Shooter.Sciprts.Heritage
 {
     abstract class GameObject
     {
+        public float rotation;
+        public float scale;
+        public float layerDeapth;
+
         public Vector2 postion;
+        public Vector2 origin;
 
         public Rectangle hitbox;
+        public Rectangle sourceRectangle;
+
+        SpriteEffects spriteEffects;
+
         public Color color;
 
         public Texture2D texture;
@@ -26,7 +35,7 @@ namespace Space_Shooter.Sciprts.Heritage
 
         public virtual void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(texture, postion, color);
+            _spriteBatch.Draw(texture, postion, sourceRectangle, color, rotation, origin, scale, spriteEffects, layerDeapth);
         }
     }
 }

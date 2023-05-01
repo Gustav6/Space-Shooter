@@ -2,8 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts;
+using Space_Shooter.Sciprts.Enemies;
+using Space_Shooter.Sciprts.Gui;
 using Space_Shooter.Sciprts.Heritage;
 using Space_Shooter.Sciprts.Moveable;
+using Space_Shooter.Sciprts.Player;
 
 namespace Space_Shooter
 {
@@ -11,6 +14,7 @@ namespace Space_Shooter
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private SpriteFont font;
 
         public Game1()
         {
@@ -24,17 +28,26 @@ namespace Space_Shooter
         protected override void Initialize()
         {
             Data.playerTexture = Content.Load<Texture2D>("Player");
-            //Data.enemyTexture = Content.Load<Texture2D>("");
-            //Data.projectileTexture = Content.Load<Texture2D>("");
+            Data.projectileTexture = Content.Load<Texture2D>("Projectile");
+
+            // The list goes as follows white enemy is number 0, red enemy is number 1, and orange enemy is number 3.
+            Data.enemyTextureList.Add(Content.Load<Texture2D>("whiteenemy"));
+            Data.enemyTextureList.Add(Content.Load<Texture2D>("redenemy"));
+            Data.enemyTextureList.Add(Content.Load<Texture2D>("orangeenemy"));
+            font = Content.Load<SpriteFont>("Font");
 
             base.Initialize();
+
+            Data.gameObjects.Add(new Projectiles(new Vector2(200, 200)));
+            Data.gameObjects.Add(new Player(new Vector2(500, 500)));
+            Data.gameObjects.Add(new SmallEnemy(new Vector2(300, 500)));
+            Data.gameObjects.Add(new MediumEnemy(new Vector2(900, 500)));
+            Data.gameObjects.Add(new BigEnemy(new Vector2(1200, 500)));
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            Data.gameObjects.Add(new Player(new Vector2(500, 500)));
         }
 
         protected override void Update(GameTime gameTime)
@@ -61,6 +74,11 @@ namespace Space_Shooter
             foreach (GameObject gameObjects in Data.gameObjects)
             {
                 gameObjects.Draw(_spriteBatch);
+
+                if (gameObjects is Player p)
+                {
+                    _spriteBatch.DrawString(font, p.health.ToString(), new Vector2(50, 50), Color.LightGreen);
+                }
             }
 
             _spriteBatch.End();

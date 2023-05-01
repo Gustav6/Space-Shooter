@@ -11,11 +11,11 @@ namespace Space_Shooter.Sciprts
     internal class Data
     {
         public static List<GameObject> gameObjects = new List<GameObject>();
+        public static List<Texture2D> enemyTextureList = new List<Texture2D>();
 
         public static Random rng = new Random();
 
         public static Texture2D playerTexture;
-        public static Texture2D enemyTexture;
         public static Texture2D projectileTexture;
     }
 }

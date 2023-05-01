@@ -4,9 +4,19 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Font.spritefont</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/orangeenemy.png</File>
     <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Projectile.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/redenemy.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
