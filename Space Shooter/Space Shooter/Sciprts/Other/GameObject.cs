@@ -14,7 +14,7 @@ namespace Space_Shooter.Sciprts.Heritage
         public float scale;
         public float layerDeapth;
 
-        public Vector2 postion;
+        public Vector2 position;
         public Vector2 origin;
 
         public Rectangle hitbox;
@@ -30,12 +30,13 @@ namespace Space_Shooter.Sciprts.Heritage
 
         public virtual void Update(GameTime gameTime)
         {
-
+            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
 
         public virtual void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(texture, postion, sourceRectangle, color, rotation, origin, scale, spriteEffects, layerDeapth);
+            _spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, scale, spriteEffects, layerDeapth);
+            _spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
         }
     }
 }

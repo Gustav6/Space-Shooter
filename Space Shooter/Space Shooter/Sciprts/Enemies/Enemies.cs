@@ -26,6 +26,8 @@ namespace Space_Shooter.Sciprts.Enemies
                 }
             }
 
+            origin = new Vector2(texture.Width / 2, texture.Height / 2);
+
             base.Update(gameTime);
         }
     }

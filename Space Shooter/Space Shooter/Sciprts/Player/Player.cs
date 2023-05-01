@@ -14,7 +14,8 @@ namespace Space_Shooter.Sciprts.Player
 {
     internal class Player : Characters
     {
-        float timer;
+        float invincibilityTimer;
+        float shootCooldown;
 
         public Player(Vector2 startPostion)
         {
@@ -22,24 +23,26 @@ namespace Space_Shooter.Sciprts.Player
             moveSpeed = 250;
             isRemoved = false;
             velocity = new Vector2();
-            hitbox = new Rectangle(0, 0, 64, 64);
 
-            postion = startPostion;
+            position = startPostion;
             color = Color.White;
             texture = Data.playerTexture;
+            origin = new Vector2(texture.Width / 2, texture.Height / 2);
             rotation = MathHelper.ToRadians(180);
-            scale = 0.4f;
+            scale = 0.3f;
             sourceRectangle = new Rectangle(0, 0, 162, 192);
             layerDeapth = 1;
+            hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * scale * 0.7f), (int)(sourceRectangle.Height * scale * 0.7f));
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
         {
             base.Draw(_spriteBatch);
         }
+
         public override void Update(GameTime gameTime)
         {
-            if (timer >= 20 && !hasBeenDamaged)
+            if (invincibilityTimer <= 0)
             {
                 foreach (GameObject gameObjects in Data.gameObjects)
                 {
@@ -48,8 +51,7 @@ namespace Space_Shooter.Sciprts.Player
                         if (hitbox.Intersects(p.hitbox))
                         {
                             Damage(this, p.damage);
-                            hasBeenDamaged = true;
-                            timer = 0;
+                            invincibilityTimer = 0.5f;
                         }
                     }
                     else if (gameObjects is Enemies.Enemies e)
@@ -57,20 +59,17 @@ namespace Space_Shooter.Sciprts.Player
                         if (hitbox.Intersects(e.hitbox))
                         {
                             Damage(this, e.contactDamage);
-                            hasBeenDamaged = true;
-                            timer = 0;
+                            invincibilityTimer = 0.5f;
                         }
                     }
                 }
             }
-
-            if (timer >= 20 && hasBeenDamaged)
+            else
             {
-                hasBeenDamaged = false;
+                invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            timer++;
-
+            Shoot(gameTime);
             IsDead(this);
             Move();
             base.Update(gameTime);
@@ -107,6 +106,18 @@ namespace Space_Shooter.Sciprts.Player
                 velocity.Y = 0;
             }
             #endregion
+        }
+        public void Shoot(GameTime gametime)
+        {
+            if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
+            {
+                Data.gameObjects.Add(new Projectiles(new Vector2((position.X - origin.X * scale) + 150, (position.Y - origin.Y * scale)), new Vector2(1, 0), rotation + MathHelper.ToRadians(270)));
+                shootCooldown = 0.2f;
+            }
+            else
+            {
+                shootCooldown -= (float)gametime.ElapsedGameTime.TotalSeconds;
+            }
         }
     }
 }

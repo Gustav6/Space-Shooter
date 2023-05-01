@@ -29,6 +29,8 @@ namespace Space_Shooter
         {
             Data.playerTexture = Content.Load<Texture2D>("Player");
             Data.projectileTexture = Content.Load<Texture2D>("Projectile");
+            Data.hitBoxTexture = new Texture2D(GraphicsDevice, 1, 1);
+            Data.hitBoxTexture.SetData<Color>(new Color[] { Color.Green * 0.2f});
 
             // The list goes as follows white enemy is number 0, red enemy is number 1, and orange enemy is number 3.
             Data.enemyTextureList.Add(Content.Load<Texture2D>("whiteenemy"));
@@ -38,7 +40,6 @@ namespace Space_Shooter
 
             base.Initialize();
 
-            Data.gameObjects.Add(new Projectiles(new Vector2(200, 200)));
             Data.gameObjects.Add(new Player(new Vector2(500, 500)));
             Data.gameObjects.Add(new SmallEnemy(new Vector2(300, 500)));
             Data.gameObjects.Add(new MediumEnemy(new Vector2(900, 500)));
@@ -57,9 +58,17 @@ namespace Space_Shooter
 
             Input.GetState();
 
-            foreach (GameObject gameObject in Data.gameObjects)
+            for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                gameObject.Update(gameTime);
+                Data.gameObjects[i].Update(gameTime);
+            }
+
+            for (int i = 0; i < Data.gameObjects.Count; i++)
+            {
+                if (Data.gameObjects[i].isRemoved)
+                {
+                    Data.gameObjects.RemoveAt(i);
+                }
             }
 
             base.Update(gameTime);

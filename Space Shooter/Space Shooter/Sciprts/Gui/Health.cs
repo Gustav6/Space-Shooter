@@ -13,7 +13,7 @@ namespace Space_Shooter.Sciprts.Gui
     {
         public Health(Vector2 startPostion)
         {
-            postion = startPostion;
+            position = startPostion;
         }
 
         public override void Draw(SpriteBatch _spriteBatch)

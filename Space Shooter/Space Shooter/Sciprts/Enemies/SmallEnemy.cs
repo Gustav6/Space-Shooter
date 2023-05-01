@@ -15,10 +15,9 @@ namespace Space_Shooter.Sciprts.Enemies
         {
             moveSpeed = 200;
             health = 50;
-            postion = startPostion;
+            position = startPostion;
             velocity = Vector2.Zero;
             isRemoved = false;
-            hitbox = new Rectangle(0, 0, 64, 64);
 
             texture = Data.enemyTextureList[0];
             color = Color.White;
@@ -26,6 +25,7 @@ namespace Space_Shooter.Sciprts.Enemies
             scale = 0.3f;
             sourceRectangle = new Rectangle(0, 0, 132, 128);
             layerDeapth = 1;
+            hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * scale), (int)(sourceRectangle.Height * scale));
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -35,6 +35,7 @@ namespace Space_Shooter.Sciprts.Enemies
 
         public override void Update(GameTime gameTime)
         {
+            IsDead(this);
             base.Update(gameTime);
         }
     }

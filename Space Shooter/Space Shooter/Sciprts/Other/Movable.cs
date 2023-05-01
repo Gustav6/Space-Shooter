@@ -18,8 +18,8 @@ namespace Space_Shooter.Sciprts.Heritage
             {
                 velocity.Normalize();
             }
-            postion += velocity * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            hitbox.Location = postion.ToPoint();
+            position += velocity * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            hitbox.Location = position.ToPoint();
             base.Update(gameTime);
         }
     }

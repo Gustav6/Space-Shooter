@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts.Moveable;
 
 namespace Space_Shooter.Sciprts.Heritage
@@ -25,11 +26,6 @@ namespace Space_Shooter.Sciprts.Heritage
             {
                 characters.isRemoved = true;
             }
-        }
-
-        public void Shoot()
-        {
-
         }
     }
 }
