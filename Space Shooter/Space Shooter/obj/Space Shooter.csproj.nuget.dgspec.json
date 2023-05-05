@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {}
+    "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
+    "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
+        "projectUniqueName": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
         "projectName": "Space Shooter",
-        "projectPath": "C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\obj\\",
+        "projectPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
+        "packagesPath": "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gustav.ekstrom1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
