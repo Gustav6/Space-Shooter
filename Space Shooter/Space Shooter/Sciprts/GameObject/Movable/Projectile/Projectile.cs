@@ -12,15 +12,15 @@ namespace Space_Shooter
     internal class Projectile : Movable
     {
         public float damage = 25;
-        public bool playerOwnsProjectile;
+        public Damageable owner;
 
-        public Projectile(Vector2 _startPostion, Vector2 _velocity, float _rotation, bool _playerOwnsProjectile)
+        public Projectile(Vector2 _startPostion, Vector2 _velocity, float _rotation, Damageable _owner)
         {
             // Variables for Update
             moveSpeed = 750;
             position = _startPostion;
             velocity = _velocity;
-            playerOwnsProjectile = _playerOwnsProjectile;
+            owner = _owner;
 
             // Variables for Draw
             rotation = _rotation;
@@ -48,7 +48,7 @@ namespace Space_Shooter
             {
                 if (Data.gameObjects[i] is Damageable _damageable)
                 {
-                    if (hitbox.Intersects(_damageable.hitbox))
+                    if (hitbox.Intersects(_damageable.hitbox) && _damageable != owner)
                     {
                         isRemoved = true;
                     }

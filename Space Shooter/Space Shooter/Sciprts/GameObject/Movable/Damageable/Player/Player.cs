@@ -27,17 +27,17 @@ namespace Space_Shooter
             texture = Data.arrayOfTextures[(int)TextureType.playerTexture];
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
             rotation = MathHelper.ToRadians(0);
-            spriteScale = 0.5f;
+            spriteScale = 0.4f;
             sourceRectangle = new Rectangle(0, 0, 100, 132);
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale * 0.7f), (int)(sourceRectangle.Height * spriteScale * 0.7f));
         }
 
-        public override void Update(GameTime _gameTime)
+        public override void Update(GameTime gameTime)
         {
-            TakeDamage(_gameTime);
-            Shoot(_gameTime);
+            TakeDamage(gameTime);
+            Shoot(gameTime);
             Move();
-            base.Update(_gameTime);
+            base.Update(gameTime);
         }
 
         private void Move()
@@ -72,35 +72,35 @@ namespace Space_Shooter
             }
             #endregion
         }
-        private void Shoot(GameTime _gameTime)
+        private void Shoot(GameTime gameTime)
         {
             if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X + 25, position.Y), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), true));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
             {
-                shootCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
+                shootCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
 
-        private void TakeDamage(GameTime _gameTime)
+        private void TakeDamage(GameTime gameTime)
         {
             if (invincibilityTimer <= 0)
             {
                 #region Checks collisions with projectiles and enemies
-                foreach (GameObject _gameObjects in Data.gameObjects)
+                foreach (GameObject gameObjects in Data.gameObjects)
                 {
-                    if (_gameObjects is Projectile p)
+                    if (gameObjects is Projectile p)
                     {
-                        if (hitbox.Intersects(p.hitbox) && !p.playerOwnsProjectile)
+                        if (hitbox.Intersects(p.hitbox) && p.owner != this)
                         {
                             Damage(this, p.damage);
                             invincibilityTimer = amountOfSecondsAsInvincible;
                         }
                     }
-                    else if (_gameObjects is Enemy e)
+                    else if (gameObjects is Enemy e)
                     {
                         if (hitbox.Intersects(e.hitbox))
                         {
@@ -114,7 +114,7 @@ namespace Space_Shooter
             #region Reset timer
             else
             {
-                invincibilityTimer -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
+                invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             #endregion
         }

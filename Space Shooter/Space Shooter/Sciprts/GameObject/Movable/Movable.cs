@@ -14,9 +14,6 @@ namespace Space_Shooter
 
         public Movable()
         {
-            isRemoved = false;
-            velocity = new Vector2();
-
             layerDeapth = 1;
             color = Color.White;
         }

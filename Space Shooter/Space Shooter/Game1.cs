@@ -18,7 +18,6 @@ namespace Space_Shooter
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 1920;
             _graphics.PreferredBackBufferHeight = 1080;
-            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -60,6 +59,12 @@ namespace Space_Shooter
                 {
                     Data.gameObjects.RemoveAt(i);
                 }
+            }
+
+            if (Input.HasBeenPressed(Keys.F2))
+            {
+                _graphics.IsFullScreen = !_graphics.IsFullScreen;
+                _graphics.ApplyChanges();
             }
 
             base.Update(_gameTime);

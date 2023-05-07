@@ -18,7 +18,7 @@ namespace Space_Shooter
             {
                 if (_gameObjects is Projectile p)
                 {
-                    if (hitbox.Intersects(p.hitbox) && p.playerOwnsProjectile)
+                    if (hitbox.Intersects(p.hitbox) && p.owner != this)
                     {
                         Damage(this, p.damage);
                     }

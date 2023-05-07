@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Space Shooter\Space Shooter.csproj", "{28657664-9932-40B2-B0F1-F6A57F86BED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Shooter", "Space Shooter\Space Shooter.csproj", "{28657664-9932-40B2-B0F1-F6A57F86BED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave editor", "Wave editor\Wave editor.csproj", "{3C17B4DE-EC6A-4E98-9047-D7C256BB21B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{28657664-9932-40B2-B0F1-F6A57F86BED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28657664-9932-40B2-B0F1-F6A57F86BED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28657664-9932-40B2-B0F1-F6A57F86BED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C17B4DE-EC6A-4E98-9047-D7C256BB21B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C17B4DE-EC6A-4E98-9047-D7C256BB21B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C17B4DE-EC6A-4E98-9047-D7C256BB21B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C17B4DE-EC6A-4E98-9047-D7C256BB21B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
