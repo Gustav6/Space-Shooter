@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Space_Shooter
 {
-    internal class Player : Damageable
+    public class Player : Damageable
     {
         private float invincibilityTimer;
         private float shootCooldown;
@@ -38,6 +38,7 @@ namespace Space_Shooter
             Shoot(gameTime);
             Move();
             base.Update(gameTime);
+            BorderControll();
         }
 
         private void Move()
@@ -72,11 +73,18 @@ namespace Space_Shooter
             }
             #endregion
         }
+
+        public void BorderControll()
+        {
+            position.Y = Math.Clamp(position.Y, 0 + (texture.Height / 2 * spriteScale), Data.bufferHeight - (texture.Height / 2 * spriteScale));
+            position.X = Math.Clamp(position.X, 0 + (texture.Height / 2 * spriteScale), Data.bufferWidth / 2.5f - (texture.Height / 2 * spriteScale));
+        }
         private void Shoot(GameTime gameTime)
         {
             if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else

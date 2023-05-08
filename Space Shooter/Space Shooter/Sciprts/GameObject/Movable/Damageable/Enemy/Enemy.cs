@@ -8,7 +8,7 @@ using Space_Shooter.Sciprts.GameObject;
 
 namespace Space_Shooter
 {
-    abstract class Enemy : Damageable
+    public abstract class Enemy : Damageable
     {
         public float contactDamage = 20;
 
@@ -27,7 +27,18 @@ namespace Space_Shooter
 
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
+            InBounds(this);
             base.Update(_gameTime);
+        }
+
+        public void InBounds(Enemy enemy)
+        {
+            Rectangle inbounds = new Rectangle(0, 0, Data.bufferWidth, Data.bufferHeight);
+
+            if (!enemy.hitbox.Intersects(inbounds))
+            {
+                isRemoved = true;
+            }
         }
     }
 }

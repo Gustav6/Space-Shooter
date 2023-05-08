@@ -7,11 +7,11 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Space_Shooter.Sciprts.Other
+namespace Space_Shooter
 {
     public class TextureManager
     {
-        public static void LoadTextures(Game1 _game1, GraphicsDevice _graphicsDevice)
+        public static void LoadTextures(Game _game1, GraphicsDevice _graphicsDevice)
         {
             Data.hitBoxTexture = new Texture2D(_graphicsDevice, 1, 1);
             Data.hitBoxTexture.SetData<Color>(new Color[] { Color.Green * 0.3f });

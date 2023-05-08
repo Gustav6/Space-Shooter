@@ -7,13 +7,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts.GameObject;
-using Space_Shooter.Sciprts.Other;
 using System.Xml.Linq;
 
 
 namespace Space_Shooter
 {
-    internal class WaveManager
+    public class WaveManager
     {
 
         public WaveManager()

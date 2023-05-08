@@ -9,7 +9,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace Space_Shooter
 {
-    internal class MediumEnemy : Enemy
+    public class MediumEnemy : Enemy
     {
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.3f;

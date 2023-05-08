@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Space_Shooter
 {
-    abstract class Damageable : Movable
+    public abstract class Damageable : Movable
     {
         public float health;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter
 {
-    internal class Data
+    public class Data
     {
         public static List<GameObject> gameObjects = new List<GameObject>();
         public static Texture2D[] arrayOfTextures = new Texture2D[100]; 
@@ -16,6 +16,9 @@ namespace Space_Shooter
         public static Random rng = new Random();
 
         public static Texture2D hitBoxTexture;
+
+        public static int bufferWidth = 1920;
+        public static int bufferHeight = 1080;
     }
 
     enum TextureType

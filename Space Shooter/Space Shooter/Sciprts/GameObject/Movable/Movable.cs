@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter
 {
-    abstract class Movable : GameObject
+    public abstract class Movable : GameObject
     {
         public Vector2 velocity;
         public float moveSpeed;

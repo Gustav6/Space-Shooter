@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter.Sciprts.GameObject;
-using Space_Shooter.Sciprts.Other;
 using System.Xml.Linq;
 
 namespace Space_Shooter
@@ -16,8 +15,8 @@ namespace Space_Shooter
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = Data.bufferWidth;
+            _graphics.PreferredBackBufferHeight = Data.bufferHeight;
             _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -41,7 +40,7 @@ namespace Space_Shooter
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
-        protected override void Update(GameTime _gameTime)
+        protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -50,7 +49,7 @@ namespace Space_Shooter
 
             for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                Data.gameObjects[i].Update(_gameTime);
+                Data.gameObjects[i].Update(gameTime);
             }
 
             for (int i = 0; i < Data.gameObjects.Count; i++)
@@ -67,20 +66,20 @@ namespace Space_Shooter
                 _graphics.ApplyChanges();
             }
 
-            base.Update(_gameTime);
+            base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime _gameTime)
+        protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
 
-            foreach (GameObject _gameObjects in Data.gameObjects)
+            foreach (GameObject gameObjects in Data.gameObjects)
             {
-                _gameObjects.Draw(_spriteBatch);
+                gameObjects.Draw(_spriteBatch);
 
-                if (_gameObjects is Player p)
+                if (gameObjects is Player p)
                 {
                     _spriteBatch.DrawString(font, p.health.ToString(), new Vector2(50, 50), Color.LightGreen);
                 }
@@ -88,7 +87,7 @@ namespace Space_Shooter
 
             _spriteBatch.End();
 
-            base.Draw(_gameTime);
+            base.Draw(gameTime);
         }
     }
 }

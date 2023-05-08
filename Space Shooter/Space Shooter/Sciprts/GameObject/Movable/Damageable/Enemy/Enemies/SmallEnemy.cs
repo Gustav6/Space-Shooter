@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Space_Shooter
 {
-    internal class SmallEnemy : Enemy
+    public class SmallEnemy : Enemy
     {
         public SmallEnemy(Vector2 _startPostion, Vector2 _velocity)
         {

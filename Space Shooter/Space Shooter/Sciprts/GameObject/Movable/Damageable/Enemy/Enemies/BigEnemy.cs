@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Space_Shooter
 {
-    internal class BigEnemy : Enemy
+    public class BigEnemy : Enemy
     {
         private float attackCooldown;
         private float amountOfAttacksPerSecond = 3;

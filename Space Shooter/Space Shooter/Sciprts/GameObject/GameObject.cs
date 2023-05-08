@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
         public float rotation;
         public float spriteScale;

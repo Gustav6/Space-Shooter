@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Space_Shooter
 {
-    internal class Projectile : Movable
+    public class Projectile : Movable
     {
         public float damage = 25;
         public Damageable owner;
@@ -58,7 +58,7 @@ namespace Space_Shooter
 
         private void BorderControll()
         {
-            if (position.X >= 2000 || position.X <= -100)
+            if (position.X >= Data.bufferWidth + 100 || position.X <= -Data.bufferWidth - 100)
             {
                 isRemoved = true;
             }
