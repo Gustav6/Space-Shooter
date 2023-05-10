@@ -37,16 +37,24 @@ namespace Space_Shooter
             currentMouseState = Mouse.GetState();
             return currentMouseState;
         }
-        /*
-        public static bool MouseIsPressed(Keys key)
+        
+        public static bool MouseIsPressed(ButtonState buttonState)
         {
-            return currentMouseState.IsKeyDown(key);
+            if (buttonState == ButtonState.Pressed)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public static bool MouseHasBeenPressed(Keys key)
+        public static bool MouseHasBeenPressed(ButtonState buttonState, ButtonState previousButtonState)
         {
-            return currentMouseState.IsKeyDown(key) && !previousKeyState.IsKeyDown(key);
-        }*/
+            if (buttonState == ButtonState.Pressed && previousButtonState == ButtonState.Released)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }

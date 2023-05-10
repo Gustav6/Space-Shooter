@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Space_Shooter.Sciprts.GameObject;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Space_Shooter
 {
     public abstract class Enemy : Damageable
     {
+        Rectangle inbounds = new Rectangle(0, 0, Data.bufferWidth, Data.bufferHeight);
+
         public float contactDamage = 20;
 
-        public override void Update(GameTime _gameTime)
+        public override void Update(GameTime gameTime)
         {
-            foreach (GameObject _gameObjects in Data.gameObjects)
+            foreach (GameObject gameObject in Data.gameObject)
             {
-                if (_gameObjects is Projectile p)
+                if (gameObject is Projectile p)
                 {
                     if (hitbox.Intersects(p.hitbox) && p.owner != this)
                     {
@@ -28,14 +25,13 @@ namespace Space_Shooter
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
             InBounds(this);
-            base.Update(_gameTime);
+            base.Update(gameTime);
         }
 
-        public void InBounds(Enemy enemy)
+        public void InBounds(Enemy e)
         {
-            Rectangle inbounds = new Rectangle(0, 0, Data.bufferWidth, Data.bufferHeight);
 
-            if (!enemy.hitbox.Intersects(inbounds))
+            if (!e.hitbox.Intersects(inbounds))
             {
                 isRemoved = true;
             }

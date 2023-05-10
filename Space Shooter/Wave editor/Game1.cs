@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Space_Shooter;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using Wave_editor;
 
@@ -12,18 +13,18 @@ namespace Wave_editor
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public Texture2D tileBaseTexture;
 
         public MouseState mouseState;
+        public MouseState previousMouseState;
         public KeyboardState keyboardState;
 
-        public int tileSize = 16;
+        public int tileSize = 64;
         public int gameWidth = 120;
         public int gameHeight = 65;
 
-        public int selectedGameObject = 1;
+        public Texture2D tileTexture;
 
-        public bool isPaused;
+        public int selectedGameObject = 1;
 
         public Game1()
         {
@@ -47,8 +48,8 @@ namespace Wave_editor
 
             Space_Shooter.TextureManager.LoadTextures(this, GraphicsDevice);
 
-            tileBaseTexture = new Texture2D(GraphicsDevice, 1, 1);
-            tileBaseTexture.SetData<Color>(new Color[] { Color.White });
+            tileTexture = new Texture2D(GraphicsDevice, 1, 1);
+            tileTexture.SetData<Color>(new Color[] { Color.White });
         }
 
         protected override void Update(GameTime gameTime)
@@ -56,9 +57,47 @@ namespace Wave_editor
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            previousMouseState = mouseState;
             mouseState = Mouse.GetState();
             Space_Shooter.Input.GetState();
 
+            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+            {
+                if (Space_Shooter.Data.gameObject[i].isRemoved)
+                {
+                    Space_Shooter.Data.gameObject.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+            {
+                for (int x = 0; x < gameWidth; x++)
+                {
+                    for (int y = 0; y < gameHeight; y++)
+                    {
+                        if (Space_Shooter.Data.gameObject[i].hitbox.Intersects(new Rectangle(x * tileSize, y * tileSize, 64, 64)))
+                        {
+                            Data.tileMap[x, y].hasGameObject = true;
+                        }
+                    }
+                }
+            }
+
+            if (Input.HasBeenPressed(Keys.W))
+            {
+                for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+                {
+                    Data.savedObjects = Space_Shooter.Data.gameObject;
+                }
+            }
+
+            PlaceGameObjects(gameTime);
+
+            base.Update(gameTime);
+        }
+
+        public void PlaceGameObjects(GameTime gameTime)
+        {
             int mouseX = mouseState.X / tileSize;
             int mouseY = mouseState.Y / tileSize;
 
@@ -71,31 +110,67 @@ namespace Wave_editor
                 }
             }
 
+            #region Check mouse postion to place game objects
+
             if (0 <= mouseX && mouseX < gameWidth)
             {
                 if (0 <= mouseY && mouseY < gameHeight)
                 {
-                    if (mouseState.LeftButton == ButtonState.Pressed)
+                    if (Input.MouseHasBeenPressed(mouseState.LeftButton, previousMouseState.LeftButton))
                     {
-                        Data.tileMap[mouseX, mouseY] = new Tile() { hasGameObject = true };
-
-                        switch (selectedGameObject)
+                        if (!Data.tileMap[mouseX, mouseY].hasGameObject)
                         {
-                            case 1:
-                                Space_Shooter.Data.gameObjects.Add(new SmallEnemy(new Vector2(mouseX * tileSize, mouseY * tileSize), new Vector2(0, 0)));
-                                break;
-                            case 2:
-                                Space_Shooter.Data.gameObjects.Add(new MediumEnemy(new Vector2(mouseX * tileSize, mouseY * tileSize)));
-                                break;
-                            case 3:
-                                Space_Shooter.Data.gameObjects.Add(new BigEnemy(new Vector2(mouseX * tileSize, mouseY * tileSize)));
-                                break;
+                            switch (selectedGameObject)
+                            {
+                                case 1:
+                                    Space_Shooter.Data.gameObject.Add(new SmallEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2), new Vector2(0, 0)));
+                                    Data.tileMap[mouseX, mouseY].hasGameObject = true;
+                                    break;
+                                case 2:
+                                    Space_Shooter.Data.gameObject.Add(new MediumEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
+                                    Data.tileMap[mouseX, mouseY].hasGameObject = true;
+                                    break;
+                                case 3:
+                                    Space_Shooter.Data.gameObject.Add(new BigEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
+                                    Data.tileMap[mouseX, mouseY].hasGameObject = true;
+                                    break;
+                            }
+
+                            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+                            {
+                                Space_Shooter.Data.gameObject[i].Update(gameTime);
+                            }
                         }
                     }
+
+                    #endregion
+
+                    #region Removes game object at mouse
+
+                    if (Input.MouseHasBeenPressed(mouseState.RightButton, previousMouseState.RightButton))
+                    {
+                        foreach (Space_Shooter.GameObject gameObjects in Space_Shooter.Data.gameObject)
+                        {
+                            if (gameObjects is Enemy e)
+                            {
+                                if (Data.tileMap[mouseX, mouseY].hasGameObject && e.hitbox.Intersects(new Rectangle((int)mouseState.Position.ToVector2().X, (int)mouseState.Position.ToVector2().Y, 0, 0)))
+                                {
+                                    e.isRemoved = true;
+                                    for (int x = 0; x < gameWidth; x++)
+                                    {
+                                        for (int y = 0; y < gameHeight; y++)
+                                        {
+                                            Data.tileMap[x, y].hasGameObject = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #endregion
                 }
             }
-
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -104,7 +179,15 @@ namespace Wave_editor
 
             _spriteBatch.Begin();
 
-            foreach (GameObject _gameObjects in Space_Shooter.Data.gameObjects)
+            for (int x = 0; x < gameWidth; x++)
+            {
+                for (int y = 0; y < gameHeight; y++)
+                {
+                    _spriteBatch.Draw(tileTexture, new Rectangle(x * tileSize, y * tileSize, tileSize, tileSize), Data.tileMap[x, y].hasGameObject ? Color.White : Color.Black);
+                }
+            }
+
+            foreach (GameObject _gameObjects in Space_Shooter.Data.gameObject)
             {
                 _gameObjects.Draw(_spriteBatch);
             }

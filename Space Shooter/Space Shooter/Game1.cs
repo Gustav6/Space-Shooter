@@ -30,9 +30,9 @@ namespace Space_Shooter
 
             base.Initialize();
 
-            Data.gameObjects.Add(new Player(new Vector2(200, 500)));
-            Data.gameObjects.Add(new MediumEnemy(new Vector2(900, 500)));
-            Data.gameObjects.Add(new BigEnemy(new Vector2(900, 800)));
+            Data.gameObject.Add(new Player(new Vector2(200, 500)));
+            Data.gameObject.Add(new MediumEnemy(new Vector2(900, 500)));
+            Data.gameObject.Add(new BigEnemy(new Vector2(900, 800)));
         }
 
         protected override void LoadContent()
@@ -47,16 +47,16 @@ namespace Space_Shooter
 
             Input.GetState();
 
-            for (int i = 0; i < Data.gameObjects.Count; i++)
+            for (int i = 0; i < Data.gameObject.Count; i++)
             {
-                Data.gameObjects[i].Update(gameTime);
+                Data.gameObject[i].Update(gameTime);
             }
 
-            for (int i = 0; i < Data.gameObjects.Count; i++)
+            for (int i = 0; i < Data.gameObject.Count; i++)
             {
-                if (Data.gameObjects[i].isRemoved)
+                if (Data.gameObject[i].isRemoved)
                 {
-                    Data.gameObjects.RemoveAt(i);
+                    Data.gameObject.RemoveAt(i);
                 }
             }
 
@@ -75,7 +75,7 @@ namespace Space_Shooter
 
             _spriteBatch.Begin();
 
-            foreach (GameObject gameObjects in Data.gameObjects)
+            foreach (GameObject gameObjects in Data.gameObject)
             {
                 gameObjects.Draw(_spriteBatch);
 

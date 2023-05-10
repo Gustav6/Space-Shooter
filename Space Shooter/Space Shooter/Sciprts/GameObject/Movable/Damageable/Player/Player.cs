@@ -83,8 +83,8 @@ namespace Space_Shooter
         {
             if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObject.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObject.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -98,7 +98,7 @@ namespace Space_Shooter
             if (invincibilityTimer <= 0)
             {
                 #region Checks collisions with projectiles and enemies
-                foreach (GameObject gameObjects in Data.gameObjects)
+                foreach (GameObject gameObjects in Data.gameObject)
                 {
                     if (gameObjects is Projectile p)
                     {

@@ -37,3 +37,42 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave edito
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.pdb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.genruntimeconfig.cache
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\ref\Wave editor.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Player - Full Health.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Player Full health.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\redenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Space Shooter.deps.json
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Space Shooter.runtimeconfig.json
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Font.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\orangeenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Player.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Projectile.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\purpleenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\whiteenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Space Shooter.exe
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Wave editor.exe
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Wave editor.deps.json
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Wave editor.runtimeconfig.json
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Wave editor.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Wave editor.pdb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Space Shooter.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Space Shooter.pdb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.csproj.AssemblyReference.cache
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.AssemblyInfoInputs.cache
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.AssemblyInfo.cs
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.csproj.CoreCompileInputs.cache
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.csproj.CopyComplete
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\refint\Wave editor.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.pdb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.genruntimeconfig.cache
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\ref\Wave editor.dll

@@ -37,7 +37,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime _gameTime)
         {
-            Attack(_gameTime);
+            //Attack(_gameTime);
             base.Update(_gameTime);
         }
 
@@ -45,11 +45,11 @@ namespace Space_Shooter
         {
             if (attackCooldown <= 0)
             {
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y + 75)), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 150, position.Y), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X, position.Y), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, position.Y), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y - 75)), new Vector2(-1, 0)));
+                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y + 75)), new Vector2(-1, 0)));
+                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 150, position.Y), new Vector2(-1, 0)));
+                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X, position.Y), new Vector2(-1, 0)));
+                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, position.Y), new Vector2(-1, 0)));
+                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y - 75)), new Vector2(-1, 0)));
                 attackCooldown = amountOfAttacksPerSecond;
             }
             else

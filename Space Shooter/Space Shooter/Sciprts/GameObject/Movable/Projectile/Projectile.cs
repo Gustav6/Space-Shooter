@@ -44,11 +44,11 @@ namespace Space_Shooter
 
         private void Hit()
         {
-            for (int i = 0; i < Data.gameObjects.Count; i++)
+            for (int i = 0; i < Data.gameObject.Count; i++)
             {
-                if (Data.gameObjects[i] is Damageable _damageable)
+                if (Data.gameObject[i] is Damageable d)
                 {
-                    if (hitbox.Intersects(_damageable.hitbox) && _damageable != owner)
+                    if (hitbox.Intersects(d.hitbox) && d != owner)
                     {
                         isRemoved = true;
                     }
@@ -58,7 +58,7 @@ namespace Space_Shooter
 
         private void BorderControll()
         {
-            if (position.X >= Data.bufferWidth + 100 || position.X <= -Data.bufferWidth - 100)
+            if (position.X >= Data.bufferWidth + 100 || position.X <= 0 - 100)
             {
                 isRemoved = true;
             }

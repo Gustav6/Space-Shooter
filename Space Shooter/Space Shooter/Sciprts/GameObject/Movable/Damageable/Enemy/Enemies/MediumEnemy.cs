@@ -30,7 +30,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime _gameTime)
         {
-            Shoot(_gameTime);
+            //Shoot(_gameTime);
             base.Update(_gameTime);
         }
 
@@ -38,7 +38,7 @@ namespace Space_Shooter
         {
             if (shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), rotation + MathHelper.ToRadians(-90), this));
+                Data.gameObject.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), rotation + MathHelper.ToRadians(-90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else

@@ -11,5 +11,7 @@ namespace Wave_editor
     {
         public static Tile[,] tileMap;
         public static List<Space_Shooter.GameObject> gameObjectSelect = new List<GameObject>();
+
+        public static List<Space_Shooter.GameObject> savedObjects = new List<GameObject>();
     }
 }

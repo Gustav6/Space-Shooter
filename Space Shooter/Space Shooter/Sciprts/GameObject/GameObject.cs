@@ -26,6 +26,11 @@ namespace Space_Shooter
 
         public bool isRemoved;
 
+        public virtual void Start()
+        {
+            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
+        }
+
         public virtual void Update(GameTime _gameTime)
         {
             hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
