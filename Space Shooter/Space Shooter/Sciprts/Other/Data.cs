@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Space_Shooter.Sciprts.GameObject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Space_Shooter
 {
@@ -27,6 +23,8 @@ namespace Space_Shooter
         mediumEnemyTexture,
         bigEnemyTexture,
         playerTexture,
-        projectileTexture
+        projectileTexture,
+        playerEngine,
+        smallEnemyEngine
     }
 }

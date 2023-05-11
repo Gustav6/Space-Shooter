@@ -21,6 +21,8 @@ namespace Space_Shooter
             Data.arrayOfTextures.SetValue(_game1.Content.Load<Texture2D>("orangeenemy"), (int)TextureType.bigEnemyTexture);
             Data.arrayOfTextures.SetValue(_game1.Content.Load<Texture2D>("Player"), (int)TextureType.playerTexture);
             Data.arrayOfTextures.SetValue(_game1.Content.Load<Texture2D>("Projectile"), (int)TextureType.projectileTexture);
+            Data.arrayOfTextures.SetValue(_game1.Content.Load<Texture2D>("Player_Engine"), (int)TextureType.playerEngine);
+            Data.arrayOfTextures.SetValue(_game1.Content.Load<Texture2D>("whiteenemy_Engine"), (int)TextureType.smallEnemyEngine);
         }
     }
 }

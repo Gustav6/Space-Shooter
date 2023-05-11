@@ -66,3 +66,5 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoo
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player - Full Health.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player Full health.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\purpleenemy.xnb
+C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player_Engine.xnb
+C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\whiteenemy_Engine.xnb

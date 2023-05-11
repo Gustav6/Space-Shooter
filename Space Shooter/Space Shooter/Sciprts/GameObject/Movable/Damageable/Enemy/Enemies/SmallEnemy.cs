@@ -17,6 +17,8 @@ namespace Space_Shooter
             health = 50;
             position = _startPostion;
             velocity = _velocity;
+            engineTexture = Data.arrayOfTextures[(int)TextureType.smallEnemyEngine];
+            sourceRectangleEngine = new Rectangle(0, 0, 64, 132);
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.smallEnemyTexture];
@@ -26,14 +28,18 @@ namespace Space_Shooter
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
-        }
-
         public override void Update(GameTime _gameTime)
         {
             base.Update(_gameTime);
+        }
+
+        public override void Draw(SpriteBatch _spriteBatch)
+        {
+            if (velocity.X <= 0.1f)
+            {
+                _spriteBatch.Draw(engineTexture, new Vector2(position.X + texture.Width * spriteScale, position.Y), sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+            }
+            base.Draw(_spriteBatch);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Space_Shooter
@@ -35,6 +36,11 @@ namespace Space_Shooter
             {
                 isRemoved = true;
             }
+        }
+
+        public override void Draw(SpriteBatch _spriteBatch)
+        {
+            base.Draw(_spriteBatch);
         }
     }
 }

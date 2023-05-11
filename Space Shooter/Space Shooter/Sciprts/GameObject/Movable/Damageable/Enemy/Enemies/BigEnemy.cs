@@ -25,19 +25,15 @@ namespace Space_Shooter
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.bigEnemyTexture];
             rotation = MathHelper.ToRadians(0);
-            spriteScale = 0.5f;
+            spriteScale = 0.7f;
             sourceRectangle = new Rectangle(0, 0, 136, 200);
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
-        }
 
         public override void Update(GameTime _gameTime)
         {
-            //Attack(_gameTime);
+            Attack(_gameTime);
             base.Update(_gameTime);
         }
 
@@ -56,6 +52,10 @@ namespace Space_Shooter
             {
                 attackCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
             }
+        }
+        public override void Draw(SpriteBatch _spriteBatch)
+        {
+            base.Draw(_spriteBatch);
         }
     }
 }

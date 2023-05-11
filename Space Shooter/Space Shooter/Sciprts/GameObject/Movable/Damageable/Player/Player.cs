@@ -25,6 +25,8 @@ namespace Space_Shooter
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.playerTexture];
+            engineTexture = Data.arrayOfTextures[(int)TextureType.playerEngine];
+            sourceRectangleEngine = new Rectangle(0, 0, 60, 128);
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
             rotation = MathHelper.ToRadians(0);
             spriteScale = 0.4f;
@@ -128,6 +130,11 @@ namespace Space_Shooter
         }
         public override void Draw(SpriteBatch _spriteBatch)
         {
+            if (velocity.X >= 0.1f)
+            {
+                _spriteBatch.Draw(engineTexture, new Vector2(position.X - texture.Width / 2 * spriteScale, position.Y), sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+            }
+
             base.Draw(_spriteBatch);
         }
 

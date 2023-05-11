@@ -13,24 +13,31 @@ namespace Space_Shooter
     public abstract class Damageable : Movable
     {
         public float health;
+        public Rectangle sourceRectangleEngine;
+        public Texture2D engineTexture;
 
-        public override void Update(GameTime _gameTime)
+        public override void Update(GameTime gameTime)
         {
             IsDead(this);
-            base.Update(_gameTime);
+            base.Update(gameTime);
         }
 
-        public static void Damage(Damageable _damageable, float _damage)
+        public static void Damage(Damageable damageable, float damage)
         {
-            _damageable.health -= _damage;
+            damageable.health -= damage;
         }
 
-        public void IsDead(Damageable _damageable)
+        public void IsDead(Damageable damageable)
         {
             if (health <= 0)
             {
-                _damageable.isRemoved = true;
+                damageable.isRemoved = true;
             }
+        }
+
+        public override void Draw(SpriteBatch _spriteBatch)
+        {
+            base.Draw(_spriteBatch);
         }
     }
 }

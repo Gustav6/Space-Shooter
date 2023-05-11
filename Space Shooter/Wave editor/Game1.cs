@@ -19,8 +19,8 @@ namespace Wave_editor
         public KeyboardState keyboardState;
 
         public int tileSize = 64;
-        public int gameWidth = 120;
-        public int gameHeight = 65;
+        public int gameWidth = 30;
+        public int gameHeight = 17;
 
         public Texture2D tileTexture;
 
