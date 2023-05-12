@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Space_Shooter.Sciprts.GameObject;
 using System.Xml.Linq;
 
 namespace Space_Shooter
@@ -24,15 +23,16 @@ namespace Space_Shooter
 
         protected override void Initialize()
         {
-            TextureManager.LoadTextures(this, GraphicsDevice);
+            TextureManager.LoadTextures(Content, GraphicsDevice);
 
             font = Content.Load<SpriteFont>("Font");
 
             base.Initialize();
 
-            Data.gameObject.Add(new Player(new Vector2(200, 500)));
-            Data.gameObject.Add(new MediumEnemy(new Vector2(900, 500)));
-            Data.gameObject.Add(new BigEnemy(new Vector2(900, 800)));
+            //WaveManager.Wave1();
+            Data.gameObjects.Add(new Player(new Vector2(200, 500)));
+            Data.gameObjects.Add(new MediumEnemy(new Vector2(900, 500)));
+            Data.gameObjects.Add(new BigEnemy(new Vector2(900, 800)));
         }
 
         protected override void LoadContent()
@@ -47,20 +47,20 @@ namespace Space_Shooter
 
             Input.GetState();
 
-            for (int i = 0; i < Data.gameObject.Count; i++)
+            for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                Data.gameObject[i].Update(gameTime);
+                Data.gameObjects[i].Update(gameTime);
             }
 
-            for (int i = 0; i < Data.gameObject.Count; i++)
+            for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                if (Data.gameObject[i].isRemoved)
+                if (Data.gameObjects[i].isRemoved)
                 {
-                    Data.gameObject.RemoveAt(i);
+                    Data.gameObjects.RemoveAt(i);
                 }
             }
 
-            if (Input.HasBeenPressed(Keys.F2))
+            if (Input.HasBeenPressed(Keys.F11))
             {
                 _graphics.IsFullScreen = !_graphics.IsFullScreen;
                 _graphics.ApplyChanges();
@@ -75,7 +75,7 @@ namespace Space_Shooter
 
             _spriteBatch.Begin();
 
-            foreach (GameObject gameObjects in Data.gameObject)
+            foreach (GameObject gameObjects in Data.gameObjects)
             {
                 gameObjects.Draw(_spriteBatch);
 

@@ -41,21 +41,17 @@ namespace Space_Shooter
         {
             if (attackCooldown <= 0)
             {
-                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y + 75)), new Vector2(-1, 0)));
-                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 150, position.Y), new Vector2(-1, 0)));
-                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X, position.Y), new Vector2(-1, 0)));
-                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, position.Y), new Vector2(-1, 0)));
-                Data.gameObject.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y - 75)), new Vector2(-1, 0)));
+                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y + 75)), new Vector2(-1, 0)));
+                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 150, position.Y), new Vector2(-1, 0)));
+                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X, position.Y), new Vector2(-1, 0)));
+                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, position.Y), new Vector2(-1, 0)));
+                Data.gameObjects.Add(new SmallEnemy(new Vector2(position.X - 75, (position.Y - 75)), new Vector2(-1, 0)));
                 attackCooldown = amountOfAttacksPerSecond;
             }
             else
             {
                 attackCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
             }
-        }
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Space_Shooter
 {
     public class Data
     {
-        public static List<GameObject> gameObject = new List<GameObject>();
+        public static List<GameObject> gameObjects = new List<GameObject>();
         public static Texture2D[] arrayOfTextures = new Texture2D[100]; 
 
         public static Random rng = new Random();
@@ -26,5 +26,12 @@ namespace Space_Shooter
         projectileTexture,
         playerEngine,
         smallEnemyEngine
+    }
+
+    public enum EnemyType
+    {
+        bigEnemy,
+        mediumEnemy,
+        smallEnemy
     }
 }

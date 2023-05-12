@@ -19,7 +19,7 @@ namespace Space_Shooter
         public Player(Vector2 _startPostion)
         {
             // Variables for update
-            health = 150;
+            health = 15000;
             moveSpeed = 350;
             position = _startPostion;
 
@@ -31,62 +31,63 @@ namespace Space_Shooter
             rotation = MathHelper.ToRadians(0);
             spriteScale = 0.4f;
             sourceRectangle = new Rectangle(0, 0, 100, 132);
-            hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale * 0.7f), (int)(sourceRectangle.Height * spriteScale * 0.7f));
+            hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale * 0.7), (int)(sourceRectangle.Height * spriteScale * 0.7f));
         }
 
         public override void Update(GameTime gameTime)
         {
             TakeDamage(gameTime);
             Shoot(gameTime);
-            Move();
-            base.Update(gameTime);
+            CheckMovementInput();
+            Move(gameTime);
             BorderControll();
+            base.Update(gameTime);
         }
 
-        private void Move()
+        private void CheckMovementInput()
         {
             #region xInput
+            velocity.X = 0;
+
             if (Input.IsPressed(Keys.Right))
             {
                 velocity.X += 1;
             }
-            else if (Input.IsPressed(Keys.Left))
+
+            if (Input.IsPressed(Keys.Left))
             {
                 velocity.X -= 1;
-            }
-            else
-            {
-                velocity.X = 0;
             }
             #endregion
 
             #region yInput
+            velocity.Y = 0;
+
             if (Input.IsPressed(Keys.Up))
             {
                 velocity.Y -= 1;
             }
-            else if (Input.IsPressed(Keys.Down))
+            if (Input.IsPressed(Keys.Down))
             {
                 velocity.Y += 1;
             }
-            else
-            {
-                velocity.Y = 0;
-            }
+
             #endregion
         }
 
         public void BorderControll()
         {
-            position.Y = Math.Clamp(position.Y, 0 + (texture.Height / 2 * spriteScale), Data.bufferHeight - (texture.Height / 2 * spriteScale));
-            position.X = Math.Clamp(position.X, 0 + (texture.Height / 2 * spriteScale), Data.bufferWidth / 2.5f - (texture.Height / 2 * spriteScale));
+            position.Y = Math.Clamp(position.Y, hitbox.Height , Data.bufferHeight - hitbox.Height);
+            position.X = Math.Clamp(position.X, hitbox.Width , Data.bufferWidth / 2.5f - hitbox.Height);
+            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
+
         private void Shoot(GameTime gameTime)
         {
             if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
             {
-                Data.gameObject.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
-                Data.gameObject.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -100,21 +101,13 @@ namespace Space_Shooter
             if (invincibilityTimer <= 0)
             {
                 #region Checks collisions with projectiles and enemies
-                foreach (GameObject gameObjects in Data.gameObject)
+                foreach (GameObject gameObjects in Data.gameObjects)
                 {
-                    if (gameObjects is Projectile p)
-                    {
-                        if (hitbox.Intersects(p.hitbox) && p.owner != this)
-                        {
-                            Damage(this, p.damage);
-                            invincibilityTimer = amountOfSecondsAsInvincible;
-                        }
-                    }
-                    else if (gameObjects is Enemy e)
+                    if (gameObjects is Enemy e)
                     {
                         if (hitbox.Intersects(e.hitbox))
                         {
-                            Damage(this, e.contactDamage);
+                            Damage(e.contactDamage);
                             invincibilityTimer = amountOfSecondsAsInvincible;
                         }
                     }
@@ -128,13 +121,13 @@ namespace Space_Shooter
             }
             #endregion
         }
+
         public override void Draw(SpriteBatch _spriteBatch)
         {
             if (velocity.X >= 0.1f)
             {
-                _spriteBatch.Draw(engineTexture, new Vector2(position.X - texture.Width / 2 * spriteScale, position.Y), sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+                _spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
             }
-
             base.Draw(_spriteBatch);
         }
 

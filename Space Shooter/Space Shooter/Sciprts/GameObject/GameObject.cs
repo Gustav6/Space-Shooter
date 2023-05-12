@@ -26,11 +26,6 @@ namespace Space_Shooter
 
         public bool isRemoved;
 
-        public virtual void Start()
-        {
-            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
-        }
-
         public virtual void Update(GameTime _gameTime)
         {
             hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
@@ -39,7 +34,7 @@ namespace Space_Shooter
         public virtual void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
-            //_spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
+            _spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
         }
     }
 }

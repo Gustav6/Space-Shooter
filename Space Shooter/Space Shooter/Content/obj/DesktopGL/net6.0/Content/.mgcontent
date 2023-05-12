@@ -4,14 +4,14 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Font.spritefont</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/orangeenemy.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/player.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player_Engine.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Projectile.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/purpleenemy.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy.png</File>
-    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy_Engine.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/orangeenemy.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/purpleenemy.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/whiteenemy.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Font.spritefont</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player_Engine.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Projectile.png</File>
+    <File>C:/Users/gusta/OneDrive/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy_Engine.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

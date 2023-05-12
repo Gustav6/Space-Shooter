@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using Space_Shooter;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Text.Json;
 using System.Threading;
 using Wave_editor;
 
@@ -17,6 +19,9 @@ namespace Wave_editor
         public MouseState mouseState;
         public MouseState previousMouseState;
         public KeyboardState keyboardState;
+
+        private SaveWaveFormation saveWave;
+        private const string PATH = "save.json";
 
         public int tileSize = 64;
         public int gameWidth = 30;
@@ -46,7 +51,7 @@ namespace Wave_editor
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Space_Shooter.TextureManager.LoadTextures(this, GraphicsDevice);
+            Space_Shooter.TextureManager.LoadTextures(Content, GraphicsDevice);
 
             tileTexture = new Texture2D(GraphicsDevice, 1, 1);
             tileTexture.SetData<Color>(new Color[] { Color.White });
@@ -61,21 +66,21 @@ namespace Wave_editor
             mouseState = Mouse.GetState();
             Space_Shooter.Input.GetState();
 
-            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+            for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
             {
-                if (Space_Shooter.Data.gameObject[i].isRemoved)
+                if (Space_Shooter.Data.gameObjects[i].isRemoved)
                 {
-                    Space_Shooter.Data.gameObject.RemoveAt(i);
+                    Space_Shooter.Data.gameObjects.RemoveAt(i);
                 }
             }
 
-            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+            for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
             {
                 for (int x = 0; x < gameWidth; x++)
                 {
                     for (int y = 0; y < gameHeight; y++)
                     {
-                        if (Space_Shooter.Data.gameObject[i].hitbox.Intersects(new Rectangle(x * tileSize, y * tileSize, 64, 64)))
+                        if (Space_Shooter.Data.gameObjects[i].hitbox.Intersects(new Rectangle(x * tileSize, y * tileSize, 64, 64)))
                         {
                             Data.tileMap[x, y].hasGameObject = true;
                         }
@@ -83,13 +88,7 @@ namespace Wave_editor
                 }
             }
 
-            if (Input.HasBeenPressed(Keys.W))
-            {
-                for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
-                {
-                    Data.savedObjects = Space_Shooter.Data.gameObject;
-                }
-            }
+            SaveFuction();
 
             PlaceGameObjects(gameTime);
 
@@ -123,22 +122,22 @@ namespace Wave_editor
                             switch (selectedGameObject)
                             {
                                 case 1:
-                                    Space_Shooter.Data.gameObject.Add(new SmallEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2), new Vector2(0, 0)));
+                                    Space_Shooter.Data.gameObjects.Add(new SmallEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2), new Vector2(0, 0)));
                                     Data.tileMap[mouseX, mouseY].hasGameObject = true;
                                     break;
                                 case 2:
-                                    Space_Shooter.Data.gameObject.Add(new MediumEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
+                                    Space_Shooter.Data.gameObjects.Add(new MediumEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
                                     Data.tileMap[mouseX, mouseY].hasGameObject = true;
                                     break;
                                 case 3:
-                                    Space_Shooter.Data.gameObject.Add(new BigEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
+                                    Space_Shooter.Data.gameObjects.Add(new BigEnemy(new Vector2(mouseX * tileSize + tileSize / 2, mouseY * tileSize + tileSize / 2)));
                                     Data.tileMap[mouseX, mouseY].hasGameObject = true;
                                     break;
                             }
 
-                            for (int i = 0; i < Space_Shooter.Data.gameObject.Count; i++)
+                            for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
                             {
-                                Space_Shooter.Data.gameObject[i].Update(gameTime);
+                                Space_Shooter.Data.gameObjects[i].Update(gameTime);
                             }
                         }
                     }
@@ -149,7 +148,7 @@ namespace Wave_editor
 
                     if (Input.MouseHasBeenPressed(mouseState.RightButton, previousMouseState.RightButton))
                     {
-                        foreach (Space_Shooter.GameObject gameObjects in Space_Shooter.Data.gameObject)
+                        foreach (Space_Shooter.GameObject gameObjects in Space_Shooter.Data.gameObjects)
                         {
                             if (gameObjects is Enemy e)
                             {
@@ -167,9 +166,50 @@ namespace Wave_editor
                             }
                         }
                     }
-
                     #endregion
                 }
+            }
+        }
+
+        public void SaveData(SaveWaveFormation save)
+        {
+            string serializedText = JsonSerializer.Serialize<SaveWaveFormation>(save);
+            Trace.WriteLine(serializedText);
+            
+            File.WriteAllText(PATH, serializedText);
+        }
+
+        public void SaveFuction()
+        {
+            if (Input.HasBeenPressed(Keys.W))
+            {
+                saveWave = new SaveWaveFormation()
+                {
+                    postionX = new float[Space_Shooter.Data.gameObjects.Count],
+                    postionY = new float[Space_Shooter.Data.gameObjects.Count],
+                    enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
+                };
+
+                for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
+                {
+                    saveWave.postionX[i] = Space_Shooter.Data.gameObjects[i].position.X;
+                    saveWave.postionY[i] = Space_Shooter.Data.gameObjects[i].position.Y;
+
+                    switch (Space_Shooter.Data.gameObjects[i])
+                    {
+                        case BigEnemy:
+                            saveWave.enemyType[i] = EnemyType.bigEnemy;
+                            break;
+                        case MediumEnemy:
+                            saveWave.enemyType[i] = EnemyType.mediumEnemy;
+                            break;
+                        case SmallEnemy:
+                            saveWave.enemyType[i] = EnemyType.smallEnemy;
+                            break;
+                    }
+                }
+                
+                SaveData(saveWave);
             }
         }
 
@@ -187,7 +227,7 @@ namespace Wave_editor
                 }
             }
 
-            foreach (GameObject _gameObjects in Space_Shooter.Data.gameObject)
+            foreach (GameObject _gameObjects in Space_Shooter.Data.gameObjects)
             {
                 _gameObjects.Draw(_spriteBatch);
             }

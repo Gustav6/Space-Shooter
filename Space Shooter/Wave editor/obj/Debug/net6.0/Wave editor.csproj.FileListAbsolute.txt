@@ -76,3 +76,5 @@ C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.pdb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\Wave editor.genruntimeconfig.cache
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\ref\Wave editor.dll
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Player_Engine.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\whiteenemy_Engine.xnb

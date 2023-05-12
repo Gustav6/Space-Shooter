@@ -18,15 +18,15 @@ namespace Space_Shooter
             color = Color.White;
         }
 
-        public override void Update(GameTime _gameTime)
+        public void Move(GameTime gameTime)
         {
             if (velocity != Vector2.Zero)
             {
                 velocity.Normalize();
             }
 
-            position += velocity * moveSpeed * (float)_gameTime.ElapsedGameTime.TotalSeconds;
-            base.Update(_gameTime);
+            position += velocity * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
     }
 }

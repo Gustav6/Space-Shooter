@@ -23,7 +23,6 @@ C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoot
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.pdb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.genruntimeconfig.cache
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\ref\Space Shooter.dll
-C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Space Shooter.exe
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Space Shooter.deps.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Space Shooter.runtimeconfig.json
@@ -49,9 +48,7 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoo
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.pdb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\Space Shooter.genruntimeconfig.cache
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\ref\Space Shooter.dll
-C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\orangeenemy.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\redenemy.xnb
-C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\whiteenemy.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Projectile.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Font.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Font.xnb
@@ -65,6 +62,12 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoo
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\purpleenemy.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player - Full Health.xnb
 C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player Full health.xnb
-C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\purpleenemy.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player_Engine.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\whiteenemy_Engine.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\whiteenemy_Engine.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Enemy\orangeenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Enemy\purpleenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Enemy\whiteenemy.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player\Player.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Player\Player_Engine.xnb
+C:\Users\gusta\OneDrive\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Waves\save.json

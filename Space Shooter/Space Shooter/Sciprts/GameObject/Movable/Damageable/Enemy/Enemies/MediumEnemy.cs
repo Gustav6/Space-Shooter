@@ -12,7 +12,7 @@ namespace Space_Shooter
     public class MediumEnemy : Enemy
     {
         private float shootCooldown;
-        private float amountOfAttacksPerSecond = 0.3f;
+        private float amountOfAttacksPerSecond = 0.5f;
         public MediumEnemy(Vector2 _startPostion)
         {
             // Variables for Update
@@ -30,7 +30,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime _gameTime)
         {
-            //Shoot(_gameTime);
+            Shoot(_gameTime);
             base.Update(_gameTime);
         }
 
@@ -38,7 +38,7 @@ namespace Space_Shooter
         {
             if (shootCooldown <= 0)
             {
-                Data.gameObject.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), rotation + MathHelper.ToRadians(-90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), rotation + MathHelper.ToRadians(-90), this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -46,11 +46,5 @@ namespace Space_Shooter
                 shootCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
-
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
-        }
-
     }
 }

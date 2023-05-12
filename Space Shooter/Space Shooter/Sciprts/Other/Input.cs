@@ -55,6 +55,5 @@ namespace Space_Shooter
             }
             return false;
         }
-
     }
 }

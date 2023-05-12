@@ -31,26 +31,27 @@ namespace Space_Shooter
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
-        }
         public override void Update(GameTime gameTime)
         {
             Hit();
+            Move(gameTime);
             BorderControll();
             base.Update(gameTime);
         }
 
         private void Hit()
         {
-            for (int i = 0; i < Data.gameObject.Count; i++)
+            for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                if (Data.gameObject[i] is Damageable d)
+                if (Data.gameObjects[i] is Damageable d)
                 {
                     if (hitbox.Intersects(d.hitbox) && d != owner)
                     {
-                        isRemoved = true;
+                        if ((owner is Enemy && d is Player) || (owner is Player && d is Enemy))
+                        {
+                            d.Damage(damage);
+                            isRemoved = true;
+                        }
                     }
                 }
             }
