@@ -33,7 +33,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime _gameTime)
         {
-            Attack(_gameTime);
+            //Attack(_gameTime);
             base.Update(_gameTime);
         }
 

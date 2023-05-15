@@ -18,7 +18,7 @@ namespace Space_Shooter
         public static void Wave1()
         {
             string wave1;
-            wave1 = File.ReadAllText("Content/Waves/save.json");
+            wave1 = File.ReadAllText("Content/Waves/wave1.json");
             SaveWaveFormation saveWaveFormation = JsonSerializer.Deserialize<SaveWaveFormation>(wave1);
 
             for (int i = 0; i < saveWaveFormation.enemyType.Length; i++)

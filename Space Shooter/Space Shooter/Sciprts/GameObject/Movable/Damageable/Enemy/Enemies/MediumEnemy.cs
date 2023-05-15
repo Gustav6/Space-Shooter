@@ -13,12 +13,12 @@ namespace Space_Shooter
     {
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.5f;
-        public MediumEnemy(Vector2 _startPostion)
+        public MediumEnemy(Vector2 startPostion)
         {
             // Variables for Update
             moveSpeed = 200;
             health = 100;
-            position = _startPostion;
+            position = startPostion;
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.mediumEnemyTexture];
@@ -28,13 +28,13 @@ namespace Space_Shooter
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Update(GameTime _gameTime)
+        public override void Update(GameTime gameTime)
         {
-            Shoot(_gameTime);
-            base.Update(_gameTime);
+            //Shoot(_gameTime);
+            base.Update(gameTime);
         }
 
-        public void Shoot(GameTime _gameTime)
+        public void Shoot(GameTime gameTime)
         {
             if (shootCooldown <= 0)
             {
@@ -43,7 +43,7 @@ namespace Space_Shooter
             }
             else
             {
-                shootCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
+                shootCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

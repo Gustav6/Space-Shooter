@@ -12,13 +12,14 @@ namespace Space_Shooter
     public class Projectile : Movable
     {
         public float damage = 25;
+        private float angleOfRotation;
         public Damageable owner;
 
-        public Projectile(Vector2 _startPostion, Vector2 _velocity, float _rotation, Damageable _owner)
+        public Projectile(Vector2 startPostion, Vector2 _velocity, float _rotation, Damageable _owner)
         {
             // Variables for Update
-            moveSpeed = 750;
-            position = _startPostion;
+            moveSpeed = 1100;
+            position = startPostion;
             velocity = _velocity;
             owner = _owner;
 
@@ -33,6 +34,8 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
+            rotation = (float)Math.Atan2(velocity.X, -velocity.Y);
+
             Hit();
             Move(gameTime);
             BorderControll();

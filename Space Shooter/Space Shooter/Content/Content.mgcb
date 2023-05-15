@@ -56,18 +56,6 @@
 /processorParam:TextureFormat=Compressed
 /build:Font.spritefont
 
-#begin Player/Player_Engine.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Player/Player_Engine.png
-
 #begin Player/Player.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -79,6 +67,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Player/Player.png
+
+#begin Player/Player_Engine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Player/Player_Engine.png
 
 #begin Projectile.png
 /importer:TextureImporter
@@ -92,8 +92,14 @@
 /processorParam:TextureFormat=Color
 /build:Projectile.png
 
+#begin wave.json
+/copy:wave.json
+
 #begin Waves/save.json
 /copy:Waves/save.json
+
+#begin Waves/wave1.json
+/copy:Waves/wave1.json
 
 #begin whiteenemy_Engine.png
 /importer:TextureImporter

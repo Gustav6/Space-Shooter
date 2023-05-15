@@ -9,7 +9,8 @@ namespace Space_Shooter
     {
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private SpriteFont font;
+        public SpriteFont font;
+        public MouseState mouseState;
 
         public Game1()
         {
@@ -29,10 +30,8 @@ namespace Space_Shooter
 
             base.Initialize();
 
-            //WaveManager.Wave1();
+            WaveManager.Wave1();
             Data.gameObjects.Add(new Player(new Vector2(200, 500)));
-            Data.gameObjects.Add(new MediumEnemy(new Vector2(900, 500)));
-            Data.gameObjects.Add(new BigEnemy(new Vector2(900, 800)));
         }
 
         protected override void LoadContent()
@@ -46,6 +45,7 @@ namespace Space_Shooter
                 Exit();
 
             Input.GetState();
+            mouseState = Input.GetMouseState();
 
             for (int i = 0; i < Data.gameObjects.Count; i++)
             {

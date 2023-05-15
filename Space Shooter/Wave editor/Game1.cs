@@ -5,6 +5,7 @@ using Space_Shooter;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.Threading;
 using Wave_editor;
@@ -19,13 +20,17 @@ namespace Wave_editor
         public MouseState mouseState;
         public MouseState previousMouseState;
         public KeyboardState keyboardState;
+        public BinaryFormatter bf;
+        public SpriteFont font;
 
-        private SaveWaveFormation saveWave;
-        private const string PATH = "save.json";
+        private SaveWaveFormation[] saveWave;
+        private const string PATH = "wave.json";
 
         public int tileSize = 64;
         public int gameWidth = 30;
         public int gameHeight = 17;
+        public int currentWave = 1;
+        public int loadedWave;
 
         public Texture2D tileTexture;
 
@@ -43,6 +48,8 @@ namespace Wave_editor
         protected override void Initialize()
         {
             Data.tileMap = new Tile[gameWidth, gameHeight];
+
+            font = Content.Load<SpriteFont>("Font");
 
             base.Initialize();
         }
@@ -66,12 +73,23 @@ namespace Wave_editor
             mouseState = Mouse.GetState();
             Space_Shooter.Input.GetState();
 
+            if (Input.HasBeenPressed(Keys.F11))
+            {
+                _graphics.IsFullScreen = !_graphics.IsFullScreen;
+                _graphics.ApplyChanges();
+            }
+
             for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
             {
                 if (Space_Shooter.Data.gameObjects[i].isRemoved)
                 {
                     Space_Shooter.Data.gameObjects.RemoveAt(i);
                 }
+            }
+
+            for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
+            {
+                Space_Shooter.Data.gameObjects[i].Update(gameTime);
             }
 
             for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
@@ -88,7 +106,10 @@ namespace Wave_editor
                 }
             }
 
-            SaveFuction();
+            //SaveFuction();
+
+            SaveFuntionTWO();
+            LoadFunction();
 
             PlaceGameObjects(gameTime);
 
@@ -109,12 +130,12 @@ namespace Wave_editor
                 }
             }
 
-            #region Check mouse postion to place game objects
 
             if (0 <= mouseX && mouseX < gameWidth)
             {
                 if (0 <= mouseY && mouseY < gameHeight)
                 {
+                    #region Place game objects at mouse postion
                     if (Input.MouseHasBeenPressed(mouseState.LeftButton, previousMouseState.LeftButton))
                     {
                         if (!Data.tileMap[mouseX, mouseY].hasGameObject)
@@ -144,7 +165,7 @@ namespace Wave_editor
 
                     #endregion
 
-                    #region Removes game object at mouse
+                    #region Removes game object at mouse postion
 
                     if (Input.MouseHasBeenPressed(mouseState.RightButton, previousMouseState.RightButton))
                     {
@@ -171,14 +192,15 @@ namespace Wave_editor
             }
         }
 
-        public void SaveData(SaveWaveFormation save)
+        public void SaveData(SaveWaveFormation[] save)
         {
-            string serializedText = JsonSerializer.Serialize<SaveWaveFormation>(save);
+            string serializedText = JsonSerializer.Serialize<SaveWaveFormation[]>(save);
             Trace.WriteLine(serializedText);
             
             File.WriteAllText(PATH, serializedText);
         }
-
+        
+        /*
         public void SaveFuction()
         {
             if (Input.HasBeenPressed(Keys.W))
@@ -189,6 +211,7 @@ namespace Wave_editor
                     postionY = new float[Space_Shooter.Data.gameObjects.Count],
                     enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
                 };
+
 
                 for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
                 {
@@ -211,6 +234,96 @@ namespace Wave_editor
                 
                 SaveData(saveWave);
             }
+        }*/
+
+        public void SaveFuntionTWO()
+        {
+
+            if (Input.HasBeenPressed(Keys.W))
+            {
+                for (int i = 0; i < 1; i++)
+                {
+
+                    saveWave = new SaveWaveFormation[]
+                    {
+                        new SaveWaveFormation()
+                        {
+                            postionX = new float[Space_Shooter.Data.gameObjects.Count],
+                            postionY = new float[Space_Shooter.Data.gameObjects.Count],
+                            enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
+                        },
+
+                        new SaveWaveFormation()
+                        {
+                            postionX = new float[Space_Shooter.Data.gameObjects.Count],
+                            postionY = new float[Space_Shooter.Data.gameObjects.Count],
+                            enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
+                        }
+                    };
+
+
+                    for (int j = 0; j < Space_Shooter.Data.gameObjects.Count; j++)
+                    {
+                        saveWave[i].postionX[j] = Space_Shooter.Data.gameObjects[j].position.X;
+                        saveWave[i].postionY[j] = Space_Shooter.Data.gameObjects[j].position.Y;
+
+                        switch (Space_Shooter.Data.gameObjects[j])
+                        {
+                            case BigEnemy:
+                                saveWave[i].enemyType[j] = EnemyType.bigEnemy;
+                                break;
+                            case MediumEnemy:
+                                saveWave[i].enemyType[j] = EnemyType.mediumEnemy;
+                                break;
+                            case SmallEnemy:
+                                saveWave[i].enemyType[j] = EnemyType.smallEnemy;
+                                break;
+                        }
+                    }
+
+                    SaveData(saveWave);
+                }
+            }
+        }
+
+        public void LoadFunction()
+        {
+            if (Input.HasBeenPressed(Keys.Left) || Input.HasBeenPressed(Keys.Right) && currentWave != loadedWave)
+            {
+                string wave;
+                wave = File.ReadAllText("Content/wave.json");
+                SaveWaveFormation[] saveWaveFormation = JsonSerializer.Deserialize<SaveWaveFormation[]>(wave);
+
+                for (int i = 0; i < saveWaveFormation[currentWave].enemyType.Length; i++)
+                {
+                    Vector2 postion = new Vector2(saveWaveFormation[currentWave].postionX[i], saveWaveFormation[currentWave].postionY[i]);
+
+                    switch (saveWaveFormation[currentWave].enemyType[i])
+                    {
+                        case EnemyType.bigEnemy:
+                            Space_Shooter.Data.gameObjects.Add(new BigEnemy(postion));
+                            break;
+                        case EnemyType.mediumEnemy:
+                            Space_Shooter.Data.gameObjects.Add(new MediumEnemy(postion));
+                            break;
+                        case EnemyType.smallEnemy:
+                            Space_Shooter.Data.gameObjects.Add(new SmallEnemy(postion, new Vector2(0, 0)));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                loadedWave = currentWave;
+            }
+
+            if (Input.HasBeenPressed(Keys.Left) && currentWave > 0)
+            {
+                currentWave--;
+            }
+            else if (Input.HasBeenPressed(Keys.Right) && currentWave < 1)
+            {
+                currentWave++;
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -231,6 +344,8 @@ namespace Wave_editor
             {
                 _gameObjects.Draw(_spriteBatch);
             }
+
+            _spriteBatch.DrawString(font , currentWave.ToString(), new Vector2(50, 50), Color.LightGreen);
 
             _spriteBatch.End();
 

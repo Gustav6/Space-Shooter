@@ -72,11 +72,11 @@ namespace Space_Shooter
             {
                 if (velocity.Y >= 0)
                 {
-                    enginePostion.Y = position.Y + 5;
+                    enginePostion.Y = position.Y;
                 }
                 if (velocity.Y <= 0)
                 {
-                    enginePostion.Y = position.Y - 5;
+                    enginePostion.Y = position.Y;
                 }
             }
         }

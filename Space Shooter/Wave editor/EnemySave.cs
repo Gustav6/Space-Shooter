@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Wave_editor
 {
-    internal struct EnemySave
+    public struct EnemySave
     {
-        public SaveWaveFormation[] enemySave { get; set; }
-    }
+        public float postionX { get; set; }
+        public float postionY { get; set; }
+        public EnemyType enemyType { get; set; }
+    };
 }

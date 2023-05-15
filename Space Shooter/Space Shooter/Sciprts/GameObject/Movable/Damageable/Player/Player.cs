@@ -15,6 +15,7 @@ namespace Space_Shooter
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.15f;
         private float amountOfSecondsAsInvincible = 0.2f;
+        private MouseState mouseState;
 
         public Player(Vector2 _startPostion)
         {
@@ -36,6 +37,8 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
+            mouseState = Mouse.GetState();
+
             TakeDamage(gameTime);
             Shoot(gameTime);
             CheckMovementInput();
@@ -49,12 +52,12 @@ namespace Space_Shooter
             #region xInput
             velocity.X = 0;
 
-            if (Input.IsPressed(Keys.Right))
+            if (Input.IsPressed(Keys.D))
             {
                 velocity.X += 1;
             }
 
-            if (Input.IsPressed(Keys.Left))
+            if (Input.IsPressed(Keys.A))
             {
                 velocity.X -= 1;
             }
@@ -63,11 +66,11 @@ namespace Space_Shooter
             #region yInput
             velocity.Y = 0;
 
-            if (Input.IsPressed(Keys.Up))
+            if (Input.IsPressed(Keys.W))
             {
                 velocity.Y -= 1;
             }
-            if (Input.IsPressed(Keys.Down))
+            if (Input.IsPressed(Keys.S))
             {
                 velocity.Y += 1;
             }
@@ -84,10 +87,10 @@ namespace Space_Shooter
 
         private void Shoot(GameTime gameTime)
         {
-            if (Input.IsPressed(Keys.Space) && shootCooldown <= 0)
+            if (mouseState.LeftButton == ButtonState.Pressed && shootCooldown <= 0 && mouseState.Position.X >= position.X)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(1, 0), rotation + MathHelper.ToRadians(90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y - 20), 0, this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + 20), 0, this));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
