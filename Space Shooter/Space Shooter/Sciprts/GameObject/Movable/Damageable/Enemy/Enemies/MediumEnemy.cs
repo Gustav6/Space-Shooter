@@ -19,6 +19,8 @@ namespace Space_Shooter
             moveSpeed = 200;
             health = 100;
             position = startPostion;
+            projectileDamage = 15;
+            projectileMoveSpeed = 900;
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.mediumEnemyTexture];
@@ -30,7 +32,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            //Shoot(_gameTime);
+            Shoot(gameTime);
             base.Update(gameTime);
         }
 
@@ -38,7 +40,7 @@ namespace Space_Shooter
         {
             if (shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), rotation + MathHelper.ToRadians(-90), this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), 0, this, projectileMoveSpeed, projectileDamage));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else

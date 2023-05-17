@@ -16,6 +16,8 @@ namespace Space_Shooter
         public Rectangle sourceRectangleEngine;
         public Texture2D engineTexture;
         public Vector2 enginePostion;
+        public float projectileMoveSpeed;
+        public float projectileDamage;
         private float eningeAnimationTimer;
 
         public override void Update(GameTime gameTime)
@@ -79,11 +81,6 @@ namespace Space_Shooter
                     enginePostion.Y = position.Y;
                 }
             }
-        }
-
-        public override void Draw(SpriteBatch _spriteBatch)
-        {
-            base.Draw(_spriteBatch);
         }
     }
 }

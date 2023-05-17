@@ -79,7 +79,7 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave edito
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Player\Player_Engine.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Projectile.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\redenemy.xnb
+C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\wave.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Waves\save.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Waves\wave1.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\whiteenemy_Engine.xnb
-C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\wave.json

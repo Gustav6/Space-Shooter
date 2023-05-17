@@ -28,9 +28,9 @@ namespace Space_Shooter
             }
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
-            base.Draw(_spriteBatch);
+            base.Draw(spriteBatch, font);
         }
     }
 }

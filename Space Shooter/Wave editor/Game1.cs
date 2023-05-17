@@ -24,13 +24,15 @@ namespace Wave_editor
         public SpriteFont font;
 
         private SaveWaveFormation[] saveWave;
-        private const string PATH = "wave.json";
+        private SaveWaveFormation[] tempSave;
+        private const string PATH = "../../../../Space Shooter/Content/wave.json";
 
         public int tileSize = 64;
         public int gameWidth = 30;
         public int gameHeight = 17;
-        public int currentWave = 1;
-        public int loadedWave;
+        public int currentWave = 0;
+        public bool hasloadedWave;
+        SaveWaveFormation[] saveWaveFormation;
 
         public Texture2D tileTexture;
 
@@ -62,6 +64,8 @@ namespace Wave_editor
 
             tileTexture = new Texture2D(GraphicsDevice, 1, 1);
             tileTexture.SetData<Color>(new Color[] { Color.White });
+
+            LoadFunction();
         }
 
         protected override void Update(GameTime gameTime)
@@ -106,11 +110,34 @@ namespace Wave_editor
                 }
             }
 
-            //SaveFuction();
 
-            SaveFuntionTWO();
-            LoadFunction();
+            //if (Input.HasBeenPressed(Keys.A))
+            //{
+            //    tempSave = new SaveWaveFormation[]
+            //    {
+            //        new SaveWaveFormation()
+            //        {
+            //            postionX = new float[Space_Shooter.Data.gameObjects.Count],
+            //            postionY = new float[Space_Shooter.Data.gameObjects.Count],
+            //            enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
+            //        }
+            //    };
+            //
+            //    saveWave = tempSave;
+            //}
 
+            if (Input.HasBeenPressed(Keys.Left) && currentWave > 0)
+            {
+                currentWave--;
+                LoadFunction();
+            }
+            else if (Input.HasBeenPressed(Keys.Right) && currentWave < 3)
+            {
+                currentWave++;
+                LoadFunction();
+            }
+
+            SaveFuntion();
             PlaceGameObjects(gameTime);
 
             base.Update(gameTime);
@@ -199,52 +226,15 @@ namespace Wave_editor
             
             File.WriteAllText(PATH, serializedText);
         }
-        
-        /*
-        public void SaveFuction()
+
+        public void SaveFuntion()
         {
-            if (Input.HasBeenPressed(Keys.W))
-            {
-                saveWave = new SaveWaveFormation()
-                {
-                    postionX = new float[Space_Shooter.Data.gameObjects.Count],
-                    postionY = new float[Space_Shooter.Data.gameObjects.Count],
-                    enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
-                };
-
-
-                for (int i = 0; i < Space_Shooter.Data.gameObjects.Count; i++)
-                {
-                    saveWave.postionX[i] = Space_Shooter.Data.gameObjects[i].position.X;
-                    saveWave.postionY[i] = Space_Shooter.Data.gameObjects[i].position.Y;
-
-                    switch (Space_Shooter.Data.gameObjects[i])
-                    {
-                        case BigEnemy:
-                            saveWave.enemyType[i] = EnemyType.bigEnemy;
-                            break;
-                        case MediumEnemy:
-                            saveWave.enemyType[i] = EnemyType.mediumEnemy;
-                            break;
-                        case SmallEnemy:
-                            saveWave.enemyType[i] = EnemyType.smallEnemy;
-                            break;
-                    }
-                }
-                
-                SaveData(saveWave);
-            }
-        }*/
-
-        public void SaveFuntionTWO()
-        {
-
             if (Input.HasBeenPressed(Keys.W))
             {
                 for (int i = 0; i < 1; i++)
                 {
-
-                    saveWave = new SaveWaveFormation[]
+                    List<SaveWaveFormation> list; list = new List<SaveWaveFormation>(saveWaveFormation);
+                    saveWave = new SaveWaveFormation[saveWaveFormation.Length];/*
                     {
                         new SaveWaveFormation()
                         {
@@ -258,8 +248,9 @@ namespace Wave_editor
                             postionX = new float[Space_Shooter.Data.gameObjects.Count],
                             postionY = new float[Space_Shooter.Data.gameObjects.Count],
                             enemyType = new EnemyType[Space_Shooter.Data.gameObjects.Count],
+
                         }
-                    };
+                    };*/
 
 
                     for (int j = 0; j < Space_Shooter.Data.gameObjects.Count; j++)
@@ -288,41 +279,36 @@ namespace Wave_editor
 
         public void LoadFunction()
         {
-            if (Input.HasBeenPressed(Keys.Left) || Input.HasBeenPressed(Keys.Right) && currentWave != loadedWave)
+            Space_Shooter.Data.gameObjects.Clear();
+            for (int x = 0; x < gameWidth; x++)
             {
-                string wave;
-                wave = File.ReadAllText("Content/wave.json");
-                SaveWaveFormation[] saveWaveFormation = JsonSerializer.Deserialize<SaveWaveFormation[]>(wave);
-
-                for (int i = 0; i < saveWaveFormation[currentWave].enemyType.Length; i++)
+                for (int y = 0; y < gameHeight; y++)
                 {
-                    Vector2 postion = new Vector2(saveWaveFormation[currentWave].postionX[i], saveWaveFormation[currentWave].postionY[i]);
-
-                    switch (saveWaveFormation[currentWave].enemyType[i])
-                    {
-                        case EnemyType.bigEnemy:
-                            Space_Shooter.Data.gameObjects.Add(new BigEnemy(postion));
-                            break;
-                        case EnemyType.mediumEnemy:
-                            Space_Shooter.Data.gameObjects.Add(new MediumEnemy(postion));
-                            break;
-                        case EnemyType.smallEnemy:
-                            Space_Shooter.Data.gameObjects.Add(new SmallEnemy(postion, new Vector2(0, 0)));
-                            break;
-                        default:
-                            break;
-                    }
+                    Data.tileMap[x, y].hasGameObject = false;
                 }
-                loadedWave = currentWave;
             }
+            string wave;
+            wave = File.ReadAllText("../../../../Space Shooter/Content/wave.json");
+            saveWaveFormation = JsonSerializer.Deserialize<SaveWaveFormation[]>(wave);
 
-            if (Input.HasBeenPressed(Keys.Left) && currentWave > 0)
+            for (int i = 0; i < saveWaveFormation[currentWave].enemyType.Length; i++)
             {
-                currentWave--;
-            }
-            else if (Input.HasBeenPressed(Keys.Right) && currentWave < 1)
-            {
-                currentWave++;
+                Vector2 postion = new Vector2(saveWaveFormation[currentWave].postionX[i], saveWaveFormation[currentWave].postionY[i]);
+
+                switch (saveWaveFormation[currentWave].enemyType[i])
+                {
+                    case EnemyType.bigEnemy:
+                        Space_Shooter.Data.gameObjects.Add(new BigEnemy(postion));
+                        break;
+                    case EnemyType.mediumEnemy:
+                        Space_Shooter.Data.gameObjects.Add(new MediumEnemy(postion));
+                        break;
+                    case EnemyType.smallEnemy:
+                        Space_Shooter.Data.gameObjects.Add(new SmallEnemy(postion, new Vector2(0, 0)));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

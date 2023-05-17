@@ -1,1 +1,12 @@
-[{"postionX":[1056,1312,992],"postionY":[288,480,544],"enemyType":[2,2,2]},{"postionX":[600,600,200],"postionY":[300,100,400],"enemyType":[1,1,1]}]
+[
+  {
+    "postionX": [ 1440, 1504, 1568 ],
+    "postionY": [ 160, 416, 672 ],
+    "enemyType": [ 1, 0, 2 ]
+  },
+  {
+    "postionX": [ 1000, 333, 222 ],
+    "postionY": [ 160, 416, 672 ],
+    "enemyType": [ 1, 0, 2 ]
+  }
+]

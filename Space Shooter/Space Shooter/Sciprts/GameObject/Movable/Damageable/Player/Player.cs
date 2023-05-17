@@ -15,14 +15,18 @@ namespace Space_Shooter
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.15f;
         private float amountOfSecondsAsInvincible = 0.2f;
+        public float bulletSpread;
         private MouseState mouseState;
 
-        public Player(Vector2 _startPostion)
+        public Player(Vector2 startPostion)
         {
             // Variables for update
             health = 15000;
             moveSpeed = 350;
-            position = _startPostion;
+            position = startPostion;
+            projectileDamage = 20;
+            projectileMoveSpeed = 1200;
+            bulletSpread = 1;
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.playerTexture];
@@ -89,8 +93,8 @@ namespace Space_Shooter
         {
             if (mouseState.LeftButton == ButtonState.Pressed && shootCooldown <= 0 && mouseState.Position.X >= position.X)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y - 20), 0, this));
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + 20), 0, this));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + bulletSpread), 0, this, projectileMoveSpeed, projectileDamage));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y - bulletSpread), 0, this, projectileMoveSpeed, projectileDamage));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -125,13 +129,22 @@ namespace Space_Shooter
             #endregion
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
+        public void DisplayStats(SpriteBatch spriteBatch, SpriteFont font)
+        {
+                spriteBatch.DrawString(font, health.ToString(), new Vector2(50, 50), Color.LightGreen);
+                spriteBatch.DrawString(font, moveSpeed.ToString(), new Vector2(50, 75), Color.Green);
+                spriteBatch.DrawString(font, bulletSpread.ToString(), new Vector2(50, 100), Color.Blue);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             if (velocity.X >= 0.1f)
             {
-                _spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+                spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
             }
-            base.Draw(_spriteBatch);
+
+            DisplayStats(spriteBatch, font);
+            base.Draw(spriteBatch, font);
         }
 
     }

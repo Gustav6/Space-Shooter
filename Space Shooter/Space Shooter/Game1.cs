@@ -17,7 +17,6 @@ namespace Space_Shooter
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = Data.bufferWidth;
             _graphics.PreferredBackBufferHeight = Data.bufferHeight;
-            _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -43,17 +42,14 @@ namespace Space_Shooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            
             Input.GetState();
             mouseState = Input.GetMouseState();
 
             for (int i = 0; i < Data.gameObjects.Count; i++)
             {
                 Data.gameObjects[i].Update(gameTime);
-            }
 
-            for (int i = 0; i < Data.gameObjects.Count; i++)
-            {
                 if (Data.gameObjects[i].isRemoved)
                 {
                     Data.gameObjects.RemoveAt(i);
@@ -77,12 +73,7 @@ namespace Space_Shooter
 
             foreach (GameObject gameObjects in Data.gameObjects)
             {
-                gameObjects.Draw(_spriteBatch);
-
-                if (gameObjects is Player p)
-                {
-                    _spriteBatch.DrawString(font, p.health.ToString(), new Vector2(50, 50), Color.LightGreen);
-                }
+                gameObjects.Draw(_spriteBatch, font);
             }
 
             _spriteBatch.End();

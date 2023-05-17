@@ -11,17 +11,17 @@ namespace Space_Shooter
 {
     public class Projectile : Movable
     {
-        public float damage = 25;
-        private float angleOfRotation;
+        public float damage;
         public Damageable owner;
 
-        public Projectile(Vector2 startPostion, Vector2 _velocity, float _rotation, Damageable _owner)
+        public Projectile(Vector2 startPostion, Vector2 _velocity, float _rotation, Damageable _owner, float _moveSpeed, float _damage)
         {
             // Variables for Update
-            moveSpeed = 1100;
+            moveSpeed = _moveSpeed;
             position = startPostion;
             velocity = _velocity;
             owner = _owner;
+            damage = _damage;
 
             // Variables for Draw
             rotation = _rotation;

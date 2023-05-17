@@ -7,14 +7,16 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+using System.Xml.Linq;
 
 namespace Space_Shooter
 {
     public class TextureManager
     {
-        public static void LoadTextures(ContentManager contentManager, GraphicsDevice _graphicsDevice)
+        public static void LoadTextures(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
-            Data.hitBoxTexture = new Texture2D(_graphicsDevice, 1, 1);
+            Data.hitBoxTexture = new Texture2D(graphicsDevice, 1, 1);
             Data.hitBoxTexture.SetData<Color>(new Color[] { Color.Green * 0.3f });
 
             Data.arrayOfTextures[(int)TextureType.smallEnemyTexture] =  (contentManager.Load<Texture2D>("Enemy/whiteenemy"));

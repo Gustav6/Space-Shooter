@@ -28,13 +28,13 @@ namespace Space_Shooter
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
-            if (velocity.X <= 0.1f)
+            if (velocity.X <= -0.1f)
             {
-                _spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+                spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
             }
-            base.Draw(_spriteBatch);
+            base.Draw(spriteBatch, font);
         }
     }
 }
