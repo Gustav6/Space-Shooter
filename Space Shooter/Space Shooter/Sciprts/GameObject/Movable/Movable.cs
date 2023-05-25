@@ -18,6 +18,13 @@ namespace Space_Shooter
             color = Color.White;
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            Move(gameTime);
+
+            base.Update(gameTime);
+        }
+
         public void Move(GameTime gameTime)
         {
             if (velocity != Vector2.Zero)

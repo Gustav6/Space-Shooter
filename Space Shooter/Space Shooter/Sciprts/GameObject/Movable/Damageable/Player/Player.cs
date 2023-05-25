@@ -46,7 +46,6 @@ namespace Space_Shooter
             TakeDamage(gameTime);
             Shoot(gameTime);
             CheckMovementInput();
-            Move(gameTime);
             BorderControll();
             base.Update(gameTime);
         }
@@ -93,8 +92,10 @@ namespace Space_Shooter
         {
             if (mouseState.LeftButton == ButtonState.Pressed && shootCooldown <= 0 && mouseState.Position.X >= position.X)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + bulletSpread), 0, this, projectileMoveSpeed, projectileDamage));
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y - bulletSpread), 0, this, projectileMoveSpeed, projectileDamage));
+                Vector2 aimPostion = new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + bulletSpread);
+
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), aimPostion, this, projectileMoveSpeed, projectileDamage));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), aimPostion, this, projectileMoveSpeed, projectileDamage));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -131,9 +132,9 @@ namespace Space_Shooter
 
         public void DisplayStats(SpriteBatch spriteBatch, SpriteFont font)
         {
-                spriteBatch.DrawString(font, health.ToString(), new Vector2(50, 50), Color.LightGreen);
-                spriteBatch.DrawString(font, moveSpeed.ToString(), new Vector2(50, 75), Color.Green);
-                spriteBatch.DrawString(font, bulletSpread.ToString(), new Vector2(50, 100), Color.Blue);
+            spriteBatch.DrawString(font, health.ToString(), new Vector2(50, 50), Color.LightGreen);
+            spriteBatch.DrawString(font, moveSpeed.ToString(), new Vector2(50, 75), Color.Green);
+            spriteBatch.DrawString(font, bulletSpread.ToString(), new Vector2(50, 100), Color.Blue);
         }
 
         public override void Draw(SpriteBatch spriteBatch, SpriteFont font)

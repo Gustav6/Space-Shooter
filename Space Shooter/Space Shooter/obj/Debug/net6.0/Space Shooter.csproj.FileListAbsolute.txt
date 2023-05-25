@@ -74,3 +74,4 @@ C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shoo
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Waves\save.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Waves\wave1.json
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\wave.json
+C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Waves\wave.json

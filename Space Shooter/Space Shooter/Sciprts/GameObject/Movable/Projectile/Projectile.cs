@@ -14,7 +14,7 @@ namespace Space_Shooter
         public float damage;
         public Damageable owner;
 
-        public Projectile(Vector2 startPostion, Vector2 _velocity, float _rotation, Damageable _owner, float _moveSpeed, float _damage)
+        public Projectile(Vector2 startPostion, Vector2 _velocity, Damageable _owner, float _moveSpeed, float _damage)
         {
             // Variables for Update
             moveSpeed = _moveSpeed;
@@ -24,7 +24,7 @@ namespace Space_Shooter
             damage = _damage;
 
             // Variables for Draw
-            rotation = _rotation;
+            rotation = 0;
             texture = Data.arrayOfTextures[(int)TextureType.projectileTexture];
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
             spriteScale = 0.3f;
@@ -37,7 +37,6 @@ namespace Space_Shooter
             rotation = (float)Math.Atan2(velocity.X, -velocity.Y);
 
             Hit();
-            Move(gameTime);
             BorderControll();
             base.Update(gameTime);
         }

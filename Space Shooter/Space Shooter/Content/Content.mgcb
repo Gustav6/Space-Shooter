@@ -92,11 +92,8 @@
 /processorParam:TextureFormat=Color
 /build:Projectile.png
 
-#begin Waves/save.json
-/copy:Waves/save.json
-
-#begin Waves/wave1.json
-/copy:Waves/wave1.json
+#begin Waves/wave.json
+/copy:Waves/wave.json
 
 #begin whiteenemy_Engine.png
 /importer:TextureImporter

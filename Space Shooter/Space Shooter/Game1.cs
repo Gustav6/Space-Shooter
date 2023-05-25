@@ -29,8 +29,8 @@ namespace Space_Shooter
 
             base.Initialize();
 
-            WaveManager.Wave1();
             Data.gameObjects.Add(new Player(new Vector2(200, 500)));
+            WaveManager.SpawnWave();
         }
 
         protected override void LoadContent()
@@ -46,20 +46,27 @@ namespace Space_Shooter
             Input.GetState();
             mouseState = Input.GetMouseState();
 
-            for (int i = 0; i < Data.gameObjects.Count; i++)
+            WaveManager.Waves(gameTime);
+
+            // Update loop for game objects
+            for (int i = Data.gameObjects.Count - 1; i >= 0; i--)
             {
                 Data.gameObjects[i].Update(gameTime);
-
-                if (Data.gameObjects[i].isRemoved)
-                {
-                    Data.gameObjects.RemoveAt(i);
-                }
             }
 
             if (Input.HasBeenPressed(Keys.F11))
             {
                 _graphics.IsFullScreen = !_graphics.IsFullScreen;
                 _graphics.ApplyChanges();
+            }
+
+            // Remove loop
+            for (int i = 0; i < Data.gameObjects.Count; i++)
+            {
+                if (Data.gameObjects[i].isRemoved)
+                {
+                    Data.gameObjects.RemoveAt(i);
+                }
             }
 
             base.Update(gameTime);

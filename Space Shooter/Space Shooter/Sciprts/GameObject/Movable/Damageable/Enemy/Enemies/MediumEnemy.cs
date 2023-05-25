@@ -16,7 +16,7 @@ namespace Space_Shooter
         public MediumEnemy(Vector2 startPostion)
         {
             // Variables for Update
-            moveSpeed = 200;
+            moveSpeed = 800;
             health = 100;
             position = startPostion;
             projectileDamage = 15;
@@ -32,7 +32,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            Shoot(gameTime);
+            //Shoot(gameTime);
             base.Update(gameTime);
         }
 
@@ -40,7 +40,10 @@ namespace Space_Shooter
         {
             if (shootCooldown <= 0)
             {
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), new Vector2(-1, 0), 0, this, projectileMoveSpeed, projectileDamage));
+                double randomYVelocityForProjectile = Data.NextDouble(Data.rng, -0.02, 0.02);
+                Vector2 aimPostion = new Vector2(-1, (float)randomYVelocityForProjectile);
+
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), aimPostion, this, projectileMoveSpeed, projectileDamage));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else

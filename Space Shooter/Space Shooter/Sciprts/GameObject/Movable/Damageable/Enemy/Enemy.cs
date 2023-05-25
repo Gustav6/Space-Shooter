@@ -6,14 +6,12 @@ namespace Space_Shooter
 {
     public abstract class Enemy : Damageable
     {
-        Rectangle inbounds = new Rectangle(-Data.bufferWidth / 2, 0, Data.bufferWidth * 3, Data.bufferHeight);
+        Rectangle inbounds = new Rectangle(-Data.bufferWidth / 2, 0, Data.bufferWidth * 2, Data.bufferHeight);
 
         public float contactDamage = 20;
 
         public override void Update(GameTime gameTime)
         {
-            Move(gameTime);
-
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
             InBounds();

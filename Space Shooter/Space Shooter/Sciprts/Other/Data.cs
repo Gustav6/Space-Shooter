@@ -15,9 +15,15 @@ namespace Space_Shooter
 
         public static int bufferWidth = 1920;
         public static int bufferHeight = 1080;
+
+        public static double NextDouble(Random random, double minValue, double maxValue)
+        {
+            return random.NextDouble() * (maxValue - minValue) + minValue;
+        }
+
     }
 
-    enum TextureType
+    public enum TextureType
     {
         smallEnemyTexture,
         mediumEnemyTexture,
