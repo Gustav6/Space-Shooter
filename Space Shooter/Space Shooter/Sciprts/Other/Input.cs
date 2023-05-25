@@ -14,6 +14,12 @@ namespace Space_Shooter
         public static MouseState currentMouseState;
         public static MouseState previousMouseState;
 
+        public static void GetStateCall()
+        {
+            GetState();
+            GetMouseState();
+        }
+
         public static KeyboardState GetState()
         {
             previousKeyState = currentKeyState;

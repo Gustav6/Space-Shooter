@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/whiteenemy.png</SourceFile>
-  <SourceTime>2023-05-15T08:45:40.1443895+02:00</SourceTime>
-  <DestFile>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/bin/DesktopGL/Content/Enemy/whiteenemy.xnb</DestFile>
-  <DestTime>2023-05-15T08:47:10.556716+02:00</DestTime>
+  <SourceFile>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/whiteenemy.png</SourceFile>
+  <SourceTime>2023-05-25T11:10:40.5383045-07:00</SourceTime>
+  <DestFile>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/bin/DesktopGL/Content/Enemy/whiteenemy.xnb</DestFile>
+  <DestTime>2023-05-25T11:11:42.4489714-07:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T04:44:56-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T04:44:56-07:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

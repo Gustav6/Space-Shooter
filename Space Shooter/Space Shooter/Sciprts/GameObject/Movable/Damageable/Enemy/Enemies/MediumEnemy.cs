@@ -13,12 +13,12 @@ namespace Space_Shooter
     {
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.5f;
-        public MediumEnemy(Vector2 startPostion)
+        public MediumEnemy(Vector2 startPosition)
         {
             // Variables for Update
             moveSpeed = 800;
             health = 100;
-            position = startPostion;
+            position = startPosition;
             projectileDamage = 15;
             projectileMoveSpeed = 900;
 

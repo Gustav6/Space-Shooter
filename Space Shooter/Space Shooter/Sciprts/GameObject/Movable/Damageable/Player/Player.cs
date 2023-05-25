@@ -16,14 +16,13 @@ namespace Space_Shooter
         private float amountOfAttacksPerSecond = 0.15f;
         private float amountOfSecondsAsInvincible = 0.2f;
         public float bulletSpread;
-        private MouseState mouseState;
 
-        public Player(Vector2 startPostion)
+        public Player(Vector2 startPosition)
         {
             // Variables for update
             health = 15000;
             moveSpeed = 350;
-            position = startPostion;
+            position = startPosition;
             projectileDamage = 20;
             projectileMoveSpeed = 1200;
             bulletSpread = 1;
@@ -41,13 +40,12 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            mouseState = Mouse.GetState();
-
+            CheckMovementInput();
             TakeDamage(gameTime);
             Shoot(gameTime);
-            CheckMovementInput();
-            BorderControll();
+            
             base.Update(gameTime);
+            BorderControl();
         }
 
         private void CheckMovementInput()
@@ -81,7 +79,7 @@ namespace Space_Shooter
             #endregion
         }
 
-        public void BorderControll()
+        public void BorderControl()
         {
             position.Y = Math.Clamp(position.Y, hitbox.Height , Data.bufferHeight - hitbox.Height);
             position.X = Math.Clamp(position.X, hitbox.Width , Data.bufferWidth / 2.5f - hitbox.Height);
@@ -90,12 +88,12 @@ namespace Space_Shooter
 
         private void Shoot(GameTime gameTime)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed && shootCooldown <= 0 && mouseState.Position.X >= position.X)
+            if (Input.currentMouseState.LeftButton == ButtonState.Pressed && shootCooldown <= 0 && Input.currentMouseState.Position.X >= position.X)
             {
-                Vector2 aimPostion = new Vector2(mouseState.Position.X - position.X, mouseState.Position.Y - position.Y + bulletSpread);
+                Vector2 aimPosition = new Vector2(Input.currentMouseState.Position.X - position.X, Input.currentMouseState.Position.Y - position.Y + bulletSpread);
 
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), aimPostion, this, projectileMoveSpeed, projectileDamage));
-                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), aimPostion, this, projectileMoveSpeed, projectileDamage));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y - 20), aimPosition, this, projectileMoveSpeed, projectileDamage));
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X, position.Y + 20), aimPosition, this, projectileMoveSpeed, projectileDamage));
                 shootCooldown = amountOfAttacksPerSecond;
             }
             else
@@ -141,7 +139,7 @@ namespace Space_Shooter
         {
             if (velocity.X >= 0.1f)
             {
-                spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+                spriteBatch.Draw(engineTexture, enginePosition, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
             }
 
             DisplayStats(spriteBatch, font);

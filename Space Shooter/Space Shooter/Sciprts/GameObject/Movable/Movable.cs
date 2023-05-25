@@ -14,14 +14,13 @@ namespace Space_Shooter
 
         public Movable()
         {
-            layerDeapth = 1;
+            layerDepth = 1;
             color = Color.White;
         }
 
         public override void Update(GameTime gameTime)
         {
             Move(gameTime);
-
             base.Update(gameTime);
         }
 

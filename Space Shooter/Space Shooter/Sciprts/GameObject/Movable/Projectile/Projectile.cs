@@ -14,14 +14,14 @@ namespace Space_Shooter
         public float damage;
         public Damageable owner;
 
-        public Projectile(Vector2 startPostion, Vector2 _velocity, Damageable _owner, float _moveSpeed, float _damage)
+        public Projectile(Vector2 startPosition, Vector2 projectileVelocity, Damageable ownerOfProjectile, float projectileMoveSpeed, float projectileDamage)
         {
             // Variables for Update
-            moveSpeed = _moveSpeed;
-            position = startPostion;
-            velocity = _velocity;
-            owner = _owner;
-            damage = _damage;
+            moveSpeed = projectileMoveSpeed;
+            position = startPosition;
+            velocity = projectileVelocity;
+            owner = ownerOfProjectile;
+            damage = projectileDamage;
 
             // Variables for Draw
             rotation = 0;
@@ -37,7 +37,7 @@ namespace Space_Shooter
             rotation = (float)Math.Atan2(velocity.X, -velocity.Y);
 
             Hit();
-            BorderControll();
+            BorderControl();
             base.Update(gameTime);
         }
 
@@ -59,9 +59,13 @@ namespace Space_Shooter
             }
         }
 
-        private void BorderControll()
+        private void BorderControl()
         {
             if (position.X >= Data.bufferWidth + 100 || position.X <= 0 - 100)
+            {
+                isRemoved = true;
+            }
+            else if (position.Y >= Data.bufferHeight + 100 || position.Y <= 0 - 100)
             {
                 isRemoved = true;
             }

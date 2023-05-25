@@ -10,12 +10,12 @@ namespace Space_Shooter
 {
     public class SmallEnemy : Enemy
     {
-        public SmallEnemy(Vector2 _startPostion, Vector2 _velocity)
+        public SmallEnemy(Vector2 startPosition, Vector2 _velocity)
         {
             // Variables for Update
             moveSpeed = 800;
             health = 50;
-            position = _startPostion;
+            position = startPosition;
             velocity = _velocity;
             engineTexture = Data.arrayOfTextures[(int)TextureType.smallEnemyEngine];
             sourceRectangleEngine = new Rectangle(0, 0, 64, 132);
@@ -32,7 +32,7 @@ namespace Space_Shooter
         {
             if (velocity.X <= -0.1f)
             {
-                spriteBatch.Draw(engineTexture, enginePostion, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+                spriteBatch.Draw(engineTexture, enginePosition, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
             }
             base.Draw(spriteBatch, font);
         }

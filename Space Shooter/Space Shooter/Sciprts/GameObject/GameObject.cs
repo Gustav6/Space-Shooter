@@ -12,7 +12,7 @@ namespace Space_Shooter
     {
         public float rotation;
         public float spriteScale;
-        public float layerDeapth;
+        public float layerDepth;
 
         public Vector2 position;
         public Vector2 origin;
@@ -35,7 +35,7 @@ namespace Space_Shooter
 
         public virtual void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
-            spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDeapth);
+            spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
             spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
         }
     }

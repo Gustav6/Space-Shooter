@@ -15,10 +15,10 @@ namespace Space_Shooter
         public float health;
         public Rectangle sourceRectangleEngine;
         public Texture2D engineTexture;
-        public Vector2 enginePostion;
+        public Vector2 enginePosition;
         public float projectileMoveSpeed;
         public float projectileDamage;
-        private float eningeAnimationTimer;
+        private float engineAnimationTimer;
 
         public override void Update(GameTime gameTime)
         {
@@ -44,29 +44,29 @@ namespace Space_Shooter
         {
             if (damageable is Enemy)
             {
-                enginePostion.X = position.X + texture.Width / 2 * spriteScale + 10;
+                enginePosition.X = position.X + texture.Width / 2 * spriteScale + 10;
             }
 
             if (damageable is Player)
             {
-                enginePostion.X = position.X - texture.Width / 2 * spriteScale;
+                enginePosition.X = position.X - texture.Width / 2 * spriteScale;
             }
 
             if (velocity.Y == 0)
             {
-                if (enginePostion.Y <= position.Y && eningeAnimationTimer <= 0)
+                if (enginePosition.Y <= position.Y && engineAnimationTimer <= 0)
                 {
-                    enginePostion.Y = position.Y + 1;
-                    eningeAnimationTimer = 0.1f;
+                    enginePosition.Y = position.Y + 1;
+                    engineAnimationTimer = 0.1f;
                 }
-                else if (enginePostion.Y >= position.Y && eningeAnimationTimer <= 0)
+                else if (enginePosition.Y >= position.Y && engineAnimationTimer <= 0)
                 {
-                    enginePostion.Y = position.Y - 1;
-                    eningeAnimationTimer = 0.1f;
+                    enginePosition.Y = position.Y - 1;
+                    engineAnimationTimer = 0.1f;
                 }
                 else
                 {
-                    eningeAnimationTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    engineAnimationTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
             }
 
@@ -74,11 +74,11 @@ namespace Space_Shooter
             {
                 if (velocity.Y >= 0)
                 {
-                    enginePostion.Y = position.Y;
+                    enginePosition.Y = position.Y;
                 }
                 if (velocity.Y <= 0)
                 {
-                    enginePostion.Y = position.Y;
+                    enginePosition.Y = position.Y;
                 }
             }
         }

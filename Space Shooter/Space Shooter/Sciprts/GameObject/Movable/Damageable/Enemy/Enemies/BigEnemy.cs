@@ -15,12 +15,12 @@ namespace Space_Shooter
         private float attackCooldown;
         private float amountOfAttacksPerSecond = 3;
 
-        public BigEnemy(Vector2 _startPostion)
+        public BigEnemy(Vector2 startPosition)
         {
             // Variables for Update
             moveSpeed = 800;
             health = 250;
-            position = _startPostion;
+            position = startPosition;
 
             // Variables for Draw
             texture = Data.arrayOfTextures[(int)TextureType.bigEnemyTexture];

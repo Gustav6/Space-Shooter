@@ -14,8 +14,12 @@ namespace Space_Shooter
 {
     public class TextureManager
     {
+        public static SpriteFont font;
+
         public static void LoadTextures(ContentManager contentManager, GraphicsDevice graphicsDevice)
         {
+            font = contentManager.Load<SpriteFont>("Font");
+
             Data.hitBoxTexture = new Texture2D(graphicsDevice, 1, 1);
             Data.hitBoxTexture.SetData<Color>(new Color[] { Color.Green * 0.3f });
 

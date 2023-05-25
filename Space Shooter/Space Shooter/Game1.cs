@@ -7,16 +7,14 @@ namespace Space_Shooter
 {
     public class Game1 : Game
     {
-        public GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-        public SpriteFont font;
-        public MouseState mouseState;
+        public GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = Data.bufferWidth;
-            _graphics.PreferredBackBufferHeight = Data.bufferHeight;
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = Data.bufferWidth;
+            graphics.PreferredBackBufferHeight = Data.bufferHeight;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -24,8 +22,6 @@ namespace Space_Shooter
         protected override void Initialize()
         {
             TextureManager.LoadTextures(Content, GraphicsDevice);
-
-            font = Content.Load<SpriteFont>("Font");
 
             base.Initialize();
 
@@ -35,7 +31,7 @@ namespace Space_Shooter
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
@@ -43,8 +39,7 @@ namespace Space_Shooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
-            Input.GetState();
-            mouseState = Input.GetMouseState();
+            Input.GetStateCall();
 
             WaveManager.Waves(gameTime);
 
@@ -56,8 +51,8 @@ namespace Space_Shooter
 
             if (Input.HasBeenPressed(Keys.F11))
             {
-                _graphics.IsFullScreen = !_graphics.IsFullScreen;
-                _graphics.ApplyChanges();
+                graphics.IsFullScreen = !graphics.IsFullScreen;
+                graphics.ApplyChanges();
             }
 
             // Remove loop
@@ -76,14 +71,14 @@ namespace Space_Shooter
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin();
+            spriteBatch.Begin();
 
             foreach (GameObject gameObjects in Data.gameObjects)
             {
-                gameObjects.Draw(_spriteBatch, font);
+                gameObjects.Draw(spriteBatch, TextureManager.font);
             }
 
-            _spriteBatch.End();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

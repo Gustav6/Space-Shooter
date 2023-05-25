@@ -9,8 +9,8 @@ namespace Wave_editor
 {
     public struct EnemySave
     {
-        public float postionX { get; set; }
-        public float postionY { get; set; }
+        public float positionX { get; set; }
+        public float positionY { get; set; }
         public EnemyType enemyType { get; set; }
     };
 }

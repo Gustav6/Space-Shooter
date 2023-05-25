@@ -10,7 +10,7 @@ namespace Space_Shooter
         private static int currentWave = 0;
         private static float waveTimer = 10;
         private static SaveWaveFormation[] saveWaveFormations;
-        private static Vector2 startPostition;
+        private static Vector2 startPosition;
         private static float smallEnemyAttack;
 
         public static void Waves(GameTime gameTime)
@@ -45,18 +45,18 @@ namespace Space_Shooter
 
             for (int i = 0; i < saveWaveFormations[currentWave].enemyType.Length; i++)
             {
-                startPostition = new Vector2(saveWaveFormations[currentWave].postionX[i], saveWaveFormations[currentWave].postionY[i]);
+                startPosition = new Vector2(saveWaveFormations[currentWave].positionX[i], saveWaveFormations[currentWave].positionY[i]);
 
                 switch (saveWaveFormations[currentWave].enemyType[i])
                 {
                     case EnemyType.bigEnemy:
-                        Data.gameObjects.Add(new BigEnemy(startPostition));
+                        Data.gameObjects.Add(new BigEnemy(startPosition));
                         break;
                     case EnemyType.mediumEnemy:
-                        Data.gameObjects.Add(new MediumEnemy(startPostition));
+                        Data.gameObjects.Add(new MediumEnemy(startPosition));
                         break;
                     case EnemyType.smallEnemy:
-                        Data.gameObjects.Add(new SmallEnemy(startPostition, new Vector2(0, 0)));
+                        Data.gameObjects.Add(new SmallEnemy(startPosition, new Vector2(0, 0)));
                         break;
                     default:
                         break;
