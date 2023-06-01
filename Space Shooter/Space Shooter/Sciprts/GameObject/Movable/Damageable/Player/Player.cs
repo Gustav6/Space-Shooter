@@ -20,7 +20,7 @@ namespace Space_Shooter
         public Player(Vector2 startPosition)
         {
             // Variables for update
-            health = 15000;
+            health = 200;
             moveSpeed = 350;
             position = startPosition;
             projectileDamage = 20;
@@ -28,6 +28,7 @@ namespace Space_Shooter
             bulletSpread = 1;
 
             // Variables for Draw
+            layerDepth = 0;
             texture = Data.arrayOfTextures[(int)TextureType.playerTexture];
             engineTexture = Data.arrayOfTextures[(int)TextureType.playerEngine];
             sourceRectangleEngine = new Rectangle(0, 0, 60, 128);
@@ -41,7 +42,7 @@ namespace Space_Shooter
         public override void Update(GameTime gameTime)
         {
             CheckMovementInput();
-            TakeDamage(gameTime);
+            ContactDamage(gameTime, 0);
             Shoot(gameTime);
             
             base.Update(gameTime);
@@ -102,30 +103,17 @@ namespace Space_Shooter
             }
         }
 
-        private void TakeDamage(GameTime gameTime)
+        public void ContactDamage(GameTime gameTime, float damage)
         {
             if (invincibilityTimer <= 0)
             {
-                #region Checks collisions with projectiles and enemies
-                foreach (GameObject gameObjects in Data.gameObjects)
-                {
-                    if (gameObjects is Enemy e)
-                    {
-                        if (hitbox.Intersects(e.hitbox))
-                        {
-                            Damage(e.contactDamage);
-                            invincibilityTimer = amountOfSecondsAsInvincible;
-                        }
-                    }
-                }
-                #endregion
+                Damage(damage);
+                invincibilityTimer = amountOfSecondsAsInvincible;
             }
-            #region Reset timer
             else
             {
                 invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            #endregion
         }
 
         public void DisplayStats(SpriteBatch spriteBatch, SpriteFont font)

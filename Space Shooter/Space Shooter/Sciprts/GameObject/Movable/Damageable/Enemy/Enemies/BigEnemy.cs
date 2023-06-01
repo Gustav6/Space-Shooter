@@ -21,8 +21,10 @@ namespace Space_Shooter
             moveSpeed = 800;
             health = 250;
             position = startPosition;
+            contactDamage = 20;
 
             // Variables for Draw
+            layerDepth = 1;
             texture = Data.arrayOfTextures[(int)TextureType.bigEnemyTexture];
             rotation = MathHelper.ToRadians(0);
             spriteScale = 0.7f;
@@ -31,13 +33,13 @@ namespace Space_Shooter
         }
 
 
-        public override void Update(GameTime _gameTime)
+        public override void Update(GameTime gameTime)
         {
-            Attack(_gameTime);
-            base.Update(_gameTime);
+            Attack(gameTime);
+            base.Update(gameTime);
         }
 
-        public void Attack(GameTime _gameTime)
+        public void Attack(GameTime gameTime)
         {
             if (attackCooldown <= 0)
             {
@@ -45,7 +47,7 @@ namespace Space_Shooter
             }
             else
             {
-                attackCooldown -= (float)_gameTime.ElapsedGameTime.TotalSeconds;
+                attackCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

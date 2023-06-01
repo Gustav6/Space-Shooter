@@ -19,8 +19,10 @@ namespace Space_Shooter
             velocity = _velocity;
             engineTexture = Data.arrayOfTextures[(int)TextureType.smallEnemyEngine];
             sourceRectangleEngine = new Rectangle(0, 0, 64, 132);
+            contactDamage = 10;
 
             // Variables for Draw
+            layerDepth = 1;
             texture = Data.arrayOfTextures[(int)TextureType.smallEnemyTexture];
             rotation = MathHelper.ToRadians(0);
             spriteScale = 0.3f;

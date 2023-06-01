@@ -11,6 +11,7 @@ namespace Space_Shooter
     {
         public Vector2 velocity;
         public float moveSpeed;
+        public float contactDamage;
 
         public Movable()
         {
@@ -22,6 +23,20 @@ namespace Space_Shooter
         {
             Move(gameTime);
             base.Update(gameTime);
+        }
+
+        public void dealContactDamage(GameTime gameTime)
+        {
+            for (int i = 0; i < Data.gameObjects.Count; i++)
+            {
+                if (Data.gameObjects[i] is Player p)
+                {
+                    if (hitbox.Intersects(p.hitbox))
+                    {
+                        p.ContactDamage(gameTime, contactDamage);
+                    }
+                }
+            }
         }
 
         public void Move(GameTime gameTime)

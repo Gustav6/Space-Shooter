@@ -11,7 +11,8 @@ namespace Space_Shooter
         private static float waveTimer = 10;
         private static SaveWaveFormation[] saveWaveFormations;
         private static Vector2 startPosition;
-        private static float smallEnemyAttack;
+        private static float asteroidSpawnTimer;
+        public static float asteroidSpeed = 600;
 
         public static void Waves(GameTime gameTime)
         {
@@ -29,11 +30,12 @@ namespace Space_Shooter
             {
                 currentWave++;
                 waveTimer = 10;
+                asteroidSpeed = 600 * (1 + 0.01f * currentWave);
                 SpawnWave();
             }
 
             MoveWaveToAttack();
-            SmallEnemyAttack(gameTime);
+            SpawnAsteroid(gameTime);
             CheckEnemyCount(gameTime);
         }
 
@@ -87,20 +89,17 @@ namespace Space_Shooter
             }
         }
 
-        private static void SmallEnemyAttack(GameTime gameTime)
+        private static void SpawnAsteroid(GameTime gameTime)
         {
-            if (smallEnemyAttack <= 0 && waveTimer >= 0)
+            if (asteroidSpawnTimer <= 0 && waveTimer >= 0)
             {
                 float randomYPosition = Data.rng.Next(150, Data.bufferHeight - 150);
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(Data.bufferWidth * 1.2f - 75, (randomYPosition + 75)), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(Data.bufferWidth * 1.2f - 150, randomYPosition), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(Data.bufferWidth * 1.2f, randomYPosition), new Vector2(-1, 0)));
-                Data.gameObjects.Add(new SmallEnemy(new Vector2(Data.bufferWidth * 1.2f - 75, (randomYPosition - 75)), new Vector2(-1, 0)));
-                smallEnemyAttack = 3;
+                Data.gameObjects.Add(new Asteroid(new Vector2(Data.bufferWidth * 1.2f, randomYPosition), new Vector2(-1, 0), asteroidSpeed));
+                asteroidSpawnTimer = 3;
             }
             else
             {
-                smallEnemyAttack -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                asteroidSpawnTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

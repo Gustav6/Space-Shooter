@@ -21,8 +21,10 @@ namespace Space_Shooter
             position = startPosition;
             projectileDamage = 15;
             projectileMoveSpeed = 900;
+            contactDamage = 15;
 
             // Variables for Draw
+            layerDepth = 0;
             texture = Data.arrayOfTextures[(int)TextureType.mediumEnemyTexture];
             rotation = MathHelper.ToRadians(0);
             spriteScale = 0.3f;

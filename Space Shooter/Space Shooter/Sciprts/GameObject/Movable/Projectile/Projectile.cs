@@ -70,5 +70,10 @@ namespace Space_Shooter
                 isRemoved = true;
             }
         }
+
+        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        {
+            base.Draw(spriteBatch, font);
+        }
     }
 }

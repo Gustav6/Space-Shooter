@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Space_Shooter.Sciprts.Other;
 using System.Xml.Linq;
 
 namespace Space_Shooter
@@ -15,6 +16,8 @@ namespace Space_Shooter
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = Data.bufferWidth;
             graphics.PreferredBackBufferHeight = Data.bufferHeight;
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -42,6 +45,7 @@ namespace Space_Shooter
             Input.GetStateCall();
 
             WaveManager.Waves(gameTime);
+
 
             // Update loop for game objects
             for (int i = Data.gameObjects.Count - 1; i >= 0; i--)
@@ -71,7 +75,7 @@ namespace Space_Shooter
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin();
+            Background.Draw(spriteBatch, gameTime);
 
             foreach (GameObject gameObjects in Data.gameObjects)
             {

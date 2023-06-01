@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj": {}
+    "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
+    "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
+        "projectUniqueName": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
         "projectName": "Space Shooter",
-        "projectPath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\obj\\",
+        "projectPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj",
+        "packagesPath": "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gustav.ekstrom1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,17 +73,21 @@
         }
       }
     },
-    "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj": {
+    "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
+        "projectUniqueName": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
         "projectName": "Wave editor",
-        "projectPath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
-        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\obj\\",
+        "projectPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
+        "packagesPath": "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gustav.ekstrom1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,8 +101,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
-                "projectPath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj"
+              "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj": {
+                "projectPath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Space Shooter\\Space Shooter.csproj"
               }
             }
           }

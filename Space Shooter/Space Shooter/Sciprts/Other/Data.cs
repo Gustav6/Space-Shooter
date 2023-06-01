@@ -31,7 +31,9 @@ namespace Space_Shooter
         playerTexture,
         projectileTexture,
         playerEngine,
-        smallEnemyEngine
+        smallEnemyEngine,
+        asteroid,
+        background
     }
 
     public enum EnemyType

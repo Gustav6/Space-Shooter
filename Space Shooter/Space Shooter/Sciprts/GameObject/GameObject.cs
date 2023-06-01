@@ -36,7 +36,7 @@ namespace Space_Shooter
         public virtual void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
-            spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
+            //spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
         }
     }
 }

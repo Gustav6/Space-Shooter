@@ -30,6 +30,8 @@ namespace Space_Shooter
             Data.arrayOfTextures[(int)TextureType.projectileTexture] = (contentManager.Load<Texture2D>("Projectile"));
             Data.arrayOfTextures[(int)TextureType.playerEngine] = (contentManager.Load<Texture2D>("Player/Player_Engine"));
             Data.arrayOfTextures[(int)TextureType.smallEnemyEngine] = (contentManager.Load<Texture2D>("whiteenemy_Engine"));
+            Data.arrayOfTextures[(int)TextureType.asteroid] = (contentManager.Load<Texture2D>("Asteroid"));
+            Data.arrayOfTextures[(int)TextureType.background] = (contentManager.Load<Texture2D>("background"));
         }
     }
 }

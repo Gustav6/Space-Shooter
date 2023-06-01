@@ -8,13 +8,12 @@ namespace Space_Shooter
     {
         Rectangle inbounds = new Rectangle(-Data.bufferWidth / 2, 0, Data.bufferWidth * 2, Data.bufferHeight);
 
-        public float contactDamage = 20;
-
         public override void Update(GameTime gameTime)
         {
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
             InBounds();
+            dealContactDamage(gameTime);
             base.Update(gameTime);
         }
 

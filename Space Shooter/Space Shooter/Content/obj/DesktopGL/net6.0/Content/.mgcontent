@@ -4,14 +4,16 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/orangeenemy.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/purpleenemy.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/whiteenemy.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Font.spritefont</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player_Engine.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Projectile.png</File>
-    <File>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy_Engine.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Asteroid.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/orangeenemy.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/purpleenemy.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Enemy/whiteenemy.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Font.spritefont</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player_Engine.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Projectile.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Space Background.png</File>
+    <File>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/whiteenemy_Engine.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -21,6 +23,8 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>Background.png</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
