@@ -10,13 +10,15 @@ namespace Space_Shooter
 {
     public class SmallEnemy : Enemy
     {
+        public bool isMoving;
+
         public SmallEnemy(Vector2 startPosition, Vector2 _velocity)
         {
             // Variables for Update
-            moveSpeed = 800;
-            health = 50;
+            moveSpeed = 1000;
+            health = 100;
             position = startPosition;
-            velocity = _velocity;
+            direction = _velocity;
             engineTexture = Data.arrayOfTextures[(int)TextureType.smallEnemyEngine];
             sourceRectangleEngine = new Rectangle(0, 0, 64, 132);
             contactDamage = 10;
@@ -30,13 +32,36 @@ namespace Space_Shooter
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale), (int)(sourceRectangle.Height * spriteScale));
         }
 
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public override void Update(GameTime gameTime)
         {
-            if (velocity.X <= -0.1f)
+            Attack();
+            base.Update(gameTime);
+        }
+
+        public void Attack()
+        {
+            if (position.Y + 5 >= Data.player?.position.Y && position.Y - 5 <= Data.player?.position.Y)
+            {
+                isMoving = true;
+            }
+            if (isMoving)
+            {
+                rotation = MathF.Atan2(direction.X, -direction.Y) + MathF.PI / 2;
+
+                if (position.X >= Data.player.position.X)
+                {
+                    direction += Vector2.Normalize(Data.player.position - position) * 0.05f;
+                }
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (direction.X <= -0.1f)
             {
                 spriteBatch.Draw(engineTexture, enginePosition, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
             }
-            base.Draw(spriteBatch, font);
+            base.Draw(spriteBatch);
         }
     }
 }

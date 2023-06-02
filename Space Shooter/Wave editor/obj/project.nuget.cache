@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7uVyuusGOielTEC2lDk5TZclmB+BRZUtR6rrr11NnTCXCw1UZEG/szu0BRrapH67WJA1ZwLSEzy170X8SEzCqg==",
+  "dgSpecHash": "WsTJeLsu5n88ZBhcjTK9Y/5AzyUk0ETQRDv1Y0y3I84204aMkT6B3iGFTTzmLmNDORUREjfh3CApGX2PaXzJMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gustav.ekstrom1\\Documents\\GitHub\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
+  "projectFilePath": "C:\\Users\\gusta\\Documents\\Github\\Space-Shooter\\Space Shooter\\Wave editor\\Wave editor.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\gustav.ekstrom1\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\gusta\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }

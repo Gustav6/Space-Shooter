@@ -131,3 +131,5 @@ C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Wave editor\obj\Debu
 C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Wave editor\obj\Debug\net6.0\ref\Wave editor.dll
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Asteroid.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Background.xnb
+C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Asteroid.xnb
+C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Wave editor\bin\Debug\net6.0\Content\Background.xnb

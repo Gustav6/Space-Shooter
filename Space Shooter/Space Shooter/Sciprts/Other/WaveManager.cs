@@ -8,7 +8,7 @@ namespace Space_Shooter
     public class WaveManager
     {
         private static int currentWave = 0;
-        private static float waveTimer = 10;
+        private static float waveTimer = 60;
         private static SaveWaveFormation[] saveWaveFormations;
         private static Vector2 startPosition;
         private static float asteroidSpawnTimer;
@@ -29,12 +29,11 @@ namespace Space_Shooter
             if (!found && currentWave != saveWaveFormations.Length - 1)
             {
                 currentWave++;
-                waveTimer = 10;
+                waveTimer = 60;
                 asteroidSpeed = 600 * (1 + 0.01f * currentWave);
                 SpawnWave();
             }
 
-            MoveWaveToAttack();
             SpawnAsteroid(gameTime);
             CheckEnemyCount(gameTime);
         }
@@ -66,11 +65,6 @@ namespace Space_Shooter
             }
         }
 
-        private static void MoveWaveToAttack()
-        {
-
-        }
-
         private static void CheckEnemyCount(GameTime gameTime)
         {
             if (waveTimer <= 0)
@@ -79,13 +73,14 @@ namespace Space_Shooter
                 {
                     if (Data.gameObjects[i] is Enemy e && !e.isRemoved)
                     {
-                        e.velocity.X -= 1;
+                        e.direction.X = -1;
                     }
                 }
             }
             else
             {
                 waveTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Data.waveTimeLeft = (int)waveTimer;
             }
         }
 

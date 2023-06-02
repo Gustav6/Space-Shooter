@@ -16,7 +16,7 @@ namespace Space_Shooter
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = Data.bufferWidth;
             graphics.PreferredBackBufferHeight = Data.bufferHeight;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -28,7 +28,8 @@ namespace Space_Shooter
 
             base.Initialize();
 
-            Data.gameObjects.Add(new Player(new Vector2(200, 500)));
+            Data.player = new Player(new Vector2(200, 500));
+            Data.gameObjects.Add(Data.player);
             WaveManager.SpawnWave();
         }
 
@@ -46,17 +47,10 @@ namespace Space_Shooter
 
             WaveManager.Waves(gameTime);
 
-
             // Update loop for game objects
             for (int i = Data.gameObjects.Count - 1; i >= 0; i--)
             {
                 Data.gameObjects[i].Update(gameTime);
-            }
-
-            if (Input.HasBeenPressed(Keys.F11))
-            {
-                graphics.IsFullScreen = !graphics.IsFullScreen;
-                graphics.ApplyChanges();
             }
 
             // Remove loop
@@ -79,8 +73,10 @@ namespace Space_Shooter
 
             foreach (GameObject gameObjects in Data.gameObjects)
             {
-                gameObjects.Draw(spriteBatch, TextureManager.font);
+                gameObjects.Draw(spriteBatch);
             }
+
+            spriteBatch.DrawString(TextureManager.font, "Wave Time Left: " + Data.waveTimeLeft.ToString() + " Seconds", new Vector2(50, 50), Color.White);
 
             spriteBatch.End();
 

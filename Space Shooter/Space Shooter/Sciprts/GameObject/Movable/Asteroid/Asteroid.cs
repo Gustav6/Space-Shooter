@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Space_Shooter
 {
-    internal class Asteroid : Movable
+    public class Asteroid : Movable
     {
         private float funnyRotation;
         public Asteroid(Vector2 startPosition, Vector2 startVelocity, float _moveSpeed)
@@ -17,7 +17,7 @@ namespace Space_Shooter
             // Variables for update
             moveSpeed = _moveSpeed;
             position = startPosition;
-            velocity = startVelocity;
+            direction = startVelocity;
             contactDamage = 50;
 
             // Variables for Draw
@@ -34,13 +34,13 @@ namespace Space_Shooter
         {
             rotation = MathHelper.ToRadians(funnyRotation);
             funnyRotation += 1.75f;
-            dealContactDamage(gameTime);
+
             base.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch, font);
+            base.Draw(spriteBatch);
         }
     }
 }

@@ -19,7 +19,6 @@ namespace Wave_editor
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private BinaryFormatter bf;
         private Texture2D tileTexture;
 
         private SaveWaveFormation[] saveWave;
@@ -42,7 +41,7 @@ namespace Wave_editor
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = Space_Shooter.Data.bufferWidth;
             _graphics.PreferredBackBufferHeight = Space_Shooter.Data.bufferHeight;
-            _graphics.IsFullScreen = true;
+            //_graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -244,7 +243,6 @@ namespace Wave_editor
 
         public void SaveFunction()
         {
-            
             saveWave = new SaveWaveFormation[saveWaveFormation.Length];
             for (int i = 0; i < saveWaveFormation.Length; i++)
             {

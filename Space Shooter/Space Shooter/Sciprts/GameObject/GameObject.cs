@@ -28,15 +28,27 @@ namespace Space_Shooter
 
         public SpriteFont font;
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void UpdateHitbox()
         {
             hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public abstract void Update(GameTime gameTime);
+
+        public void Destroy()
         {
-            spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
-            //spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
+            isRemoved = true;
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            if (!isRemoved)
+            {
+                spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
+
+                //Draw hitboxes
+                //spriteBatch.Draw(Data.hitBoxTexture, hitbox, color);
+            }
         }
     }
 }

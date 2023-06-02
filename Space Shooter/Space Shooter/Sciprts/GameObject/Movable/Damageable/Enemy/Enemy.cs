@@ -4,8 +4,10 @@ using System;
 
 namespace Space_Shooter
 {
-    public abstract class Enemy : Damageable
+    public abstract class Enemy : Ship
     {
+        private float shootCooldown;
+        private float amountOfAttacksPerSecond = 0.5f;
         Rectangle inbounds = new Rectangle(-Data.bufferWidth / 2, 0, Data.bufferWidth * 2, Data.bufferHeight);
 
         public override void Update(GameTime gameTime)
@@ -13,7 +15,7 @@ namespace Space_Shooter
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
             InBounds();
-            dealContactDamage(gameTime);
+            DealContactDamage(gameTime, contactDamage, this);
             base.Update(gameTime);
         }
 
@@ -24,10 +26,25 @@ namespace Space_Shooter
                 isRemoved = true;
             }
         }
-
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public void Shoot(GameTime gameTime)
         {
-            base.Draw(spriteBatch, font);
+            if (shootCooldown <= 0 && Data.gameObjects.Contains(Data.player))
+            {
+                double randomYVelocityForProjectile = Data.rng.NextDouble(-0.02, 0.02);
+                Vector2 aimPosition = new Vector2(-1, (float)randomYVelocityForProjectile);
+
+                Data.gameObjects.Add(new Projectile(new Vector2(position.X - 25, position.Y), aimPosition, this, projectileMoveSpeed, projectileDamage));
+                shootCooldown = amountOfAttacksPerSecond;
+            }
+            else
+            {
+                shootCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
         }
     }
 }

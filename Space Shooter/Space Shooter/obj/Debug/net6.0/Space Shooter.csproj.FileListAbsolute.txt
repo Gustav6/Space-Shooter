@@ -117,3 +117,5 @@ C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Space Shooter\obj\De
 C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Space Shooter\obj\Debug\net6.0\ref\Space Shooter.dll
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Asteroid.xnb
 C:\Users\gustav.ekstrom1\Documents\GitHub\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Background.xnb
+C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Asteroid.xnb
+C:\Users\gusta\Documents\Github\Space-Shooter\Space Shooter\Space Shooter\bin\Debug\net6.0\Content\Background.xnb

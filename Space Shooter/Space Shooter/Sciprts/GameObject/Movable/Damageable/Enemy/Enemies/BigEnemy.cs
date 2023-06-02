@@ -12,9 +12,6 @@ namespace Space_Shooter
 {
     public class BigEnemy : Enemy
     {
-        private float attackCooldown;
-        private float amountOfAttacksPerSecond = 3;
-
         public BigEnemy(Vector2 startPosition)
         {
             // Variables for Update
@@ -22,6 +19,8 @@ namespace Space_Shooter
             health = 250;
             position = startPosition;
             contactDamage = 20;
+            projectileMoveSpeed = 900;
+            contactDamage = 15;
 
             // Variables for Draw
             layerDepth = 1;
@@ -35,19 +34,31 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            Attack(gameTime);
+            Shield();
+            Shoot(gameTime);
             base.Update(gameTime);
         }
 
-        public void Attack(GameTime gameTime)
+        public void Shield()
         {
-            if (attackCooldown <= 0)
+            bool found = false;
+
+            for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                attackCooldown = amountOfAttacksPerSecond;
+                if (Data.gameObjects[i] is SmallEnemy || Data.gameObjects[i] is MediumEnemy)
+                {
+                    found = true;
+                }
+            }
+
+            if (found)
+            {
+                color = Color.Blue * 0.75f;
+                health = 250;
             }
             else
             {
-                attackCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                color = Color.White;
             }
         }
     }

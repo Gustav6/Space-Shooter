@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Space_Shooter
 {
-    public class Data
+    public static class Data
     {
         public static List<GameObject> gameObjects = new List<GameObject>();
         public static Texture2D[] arrayOfTextures = new Texture2D[100]; 
@@ -16,11 +17,15 @@ namespace Space_Shooter
         public static int bufferWidth = 1920;
         public static int bufferHeight = 1080;
 
-        public static double NextDouble(Random random, double minValue, double maxValue)
+        public static int waveTimeLeft;
+
+        public static Player player;
+        public static Asteroid asteroid;
+
+        public static double NextDouble(this Random random, double minValue, double maxValue)
         {
             return random.NextDouble() * (maxValue - minValue) + minValue;
         }
-
     }
 
     public enum TextureType

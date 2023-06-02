@@ -9,12 +9,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Space_Shooter
 {
-    public class Player : Damageable
+    public class Player : Ship
     {
-        private float invincibilityTimer;
         private float shootCooldown;
         private float amountOfAttacksPerSecond = 0.15f;
-        private float amountOfSecondsAsInvincible = 0.2f;
         public float bulletSpread;
 
         public Player(Vector2 startPosition)
@@ -37,12 +35,12 @@ namespace Space_Shooter
             spriteScale = 0.4f;
             sourceRectangle = new Rectangle(0, 0, 100, 132);
             hitbox = new Rectangle(0, 0, (int)(sourceRectangle.Width * spriteScale * 0.7), (int)(sourceRectangle.Height * spriteScale * 0.7f));
+            hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
 
         public override void Update(GameTime gameTime)
         {
             CheckMovementInput();
-            ContactDamage(gameTime, 0);
             Shoot(gameTime);
             
             base.Update(gameTime);
@@ -52,29 +50,29 @@ namespace Space_Shooter
         private void CheckMovementInput()
         {
             #region xInput
-            velocity.X = 0;
+            direction.X = 0;
 
             if (Input.IsPressed(Keys.D))
             {
-                velocity.X += 1;
+                direction.X += 1;
             }
 
             if (Input.IsPressed(Keys.A))
             {
-                velocity.X -= 1;
+                direction.X -= 1;
             }
             #endregion
 
             #region yInput
-            velocity.Y = 0;
+            direction.Y = 0;
 
             if (Input.IsPressed(Keys.W))
             {
-                velocity.Y -= 1;
+                direction.Y -= 1;
             }
             if (Input.IsPressed(Keys.S))
             {
-                velocity.Y += 1;
+                direction.Y += 1;
             }
 
             #endregion
@@ -103,35 +101,22 @@ namespace Space_Shooter
             }
         }
 
-        public void ContactDamage(GameTime gameTime, float damage)
+        public void DisplayStats(SpriteBatch spriteBatch)
         {
-            if (invincibilityTimer <= 0)
-            {
-                Damage(damage);
-                invincibilityTimer = amountOfSecondsAsInvincible;
-            }
-            else
-            {
-                invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
+            spriteBatch.DrawString(TextureManager.font, health.ToString(), new Vector2(50, 100), Color.LightGreen);
+            spriteBatch.DrawString(TextureManager.font, moveSpeed.ToString(), new Vector2(50, 125), Color.Green);
+            spriteBatch.DrawString(TextureManager.font, bulletSpread.ToString(), new Vector2(50, 150), Color.Blue);
         }
 
-        public void DisplayStats(SpriteBatch spriteBatch, SpriteFont font)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, health.ToString(), new Vector2(50, 50), Color.LightGreen);
-            spriteBatch.DrawString(font, moveSpeed.ToString(), new Vector2(50, 75), Color.Green);
-            spriteBatch.DrawString(font, bulletSpread.ToString(), new Vector2(50, 100), Color.Blue);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
-        {
-            if (velocity.X >= 0.1f)
+            if (direction.X >= 0.1f)
             {
                 spriteBatch.Draw(engineTexture, enginePosition, sourceRectangleEngine, color, rotation, origin, spriteScale, SpriteEffects.None, layerDepth);
             }
 
-            DisplayStats(spriteBatch, font);
-            base.Draw(spriteBatch, font);
+            DisplayStats(spriteBatch);
+            base.Draw(spriteBatch);
         }
 
     }

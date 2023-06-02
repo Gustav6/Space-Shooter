@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player_Engine.png</SourceFile>
-  <SourceTime>2023-05-30T09:19:10.9990735+02:00</SourceTime>
-  <DestFile>C:/Users/gustav.ekstrom1/Documents/GitHub/Space-Shooter/Space Shooter/Space Shooter/Content/bin/DesktopGL/Content/Player/Player_Engine.xnb</DestFile>
-  <DestTime>2023-05-30T09:20:33.1522128+02:00</DestTime>
+  <SourceFile>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/Player/Player_Engine.png</SourceFile>
+  <SourceTime>2023-06-02T17:41:53.5512775+02:00</SourceTime>
+  <DestFile>C:/Users/gusta/Documents/Github/Space-Shooter/Space Shooter/Space Shooter/Content/bin/DesktopGL/Content/Player/Player_Engine.xnb</DestFile>
+  <DestTime>2023-06-02T17:44:25.8076003+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

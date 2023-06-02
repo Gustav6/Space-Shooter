@@ -12,14 +12,14 @@ namespace Space_Shooter
     public class Projectile : Movable
     {
         public float damage;
-        public Damageable owner;
+        public Ship owner;
 
-        public Projectile(Vector2 startPosition, Vector2 projectileVelocity, Damageable ownerOfProjectile, float projectileMoveSpeed, float projectileDamage)
+        public Projectile(Vector2 startPosition, Vector2 projectileVelocity, Ship ownerOfProjectile, float projectileMoveSpeed, float projectileDamage)
         {
             // Variables for Update
             moveSpeed = projectileMoveSpeed;
             position = startPosition;
-            velocity = projectileVelocity;
+            direction = projectileVelocity;
             owner = ownerOfProjectile;
             damage = projectileDamage;
 
@@ -34,7 +34,7 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            rotation = (float)Math.Atan2(velocity.X, -velocity.Y);
+            rotation = MathF.Atan2(direction.X, -direction.Y);
 
             Hit();
             BorderControl();
@@ -45,15 +45,27 @@ namespace Space_Shooter
         {
             for (int i = 0; i < Data.gameObjects.Count; i++)
             {
-                if (Data.gameObjects[i] is Damageable d)
+                if (Data.gameObjects[i] is Ship s)
                 {
-                    if (hitbox.Intersects(d.hitbox) && d != owner)
+                    if (hitbox.Intersects(s.hitbox) && s != owner)
                     {
-                        if ((owner is Enemy && d is Player) || (owner is Player && d is Enemy))
+                        if ((owner is Enemy && s is Player) || (owner is Player && s is Enemy))
                         {
-                            d.Damage(damage);
+                            s.DealDamage(damage);
                             isRemoved = true;
                         }
+
+                        if (owner is SmallEnemy e && s is Player)
+                        {
+                            e.isMoving = true;
+                        }
+                    }
+                }
+                else if (Data.gameObjects[i] is Asteroid a)
+                {
+                    if (hitbox.Intersects(a.hitbox))
+                    {
+                        isRemoved = true;
                     }
                 }
             }
@@ -71,9 +83,9 @@ namespace Space_Shooter
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch, font);
+            base.Draw(spriteBatch);
         }
     }
 }

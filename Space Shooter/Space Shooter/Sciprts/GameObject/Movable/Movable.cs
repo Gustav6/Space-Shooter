@@ -9,9 +9,11 @@ namespace Space_Shooter
 {
     public abstract class Movable : GameObject
     {
-        public Vector2 velocity;
+        public Vector2 direction;
         public float moveSpeed;
         public float contactDamage;
+        private float amountOfSecondsAsInvincible = 0.2f;
+        private float invincibilityTimer;
 
         public Movable()
         {
@@ -22,31 +24,30 @@ namespace Space_Shooter
         public override void Update(GameTime gameTime)
         {
             Move(gameTime);
-            base.Update(gameTime);
+            UpdateHitbox();
         }
 
-        public void dealContactDamage(GameTime gameTime)
+        public void DealContactDamage(GameTime gameTime, float damage, GameObject gameObject)
         {
-            for (int i = 0; i < Data.gameObjects.Count; i++)
+            if (invincibilityTimer <= 0 && Data.player.hitbox.Intersects(gameObject.hitbox))
             {
-                if (Data.gameObjects[i] is Player p)
-                {
-                    if (hitbox.Intersects(p.hitbox))
-                    {
-                        p.ContactDamage(gameTime, contactDamage);
-                    }
-                }
+                Data.player.health -= damage;
+                invincibilityTimer = amountOfSecondsAsInvincible;
+            }
+            else
+            {
+                invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
 
         public void Move(GameTime gameTime)
         {
-            if (velocity != Vector2.Zero)
+            if (direction != Vector2.Zero)
             {
-                velocity.Normalize();
+                direction.Normalize();
             }
 
-            position += velocity * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            position += direction * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             hitbox.Location = (position - new Vector2(hitbox.Width / 2, hitbox.Height / 2)).ToPoint();
         }
     }
