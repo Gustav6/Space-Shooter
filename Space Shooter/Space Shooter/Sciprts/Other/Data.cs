@@ -22,6 +22,8 @@ namespace Space_Shooter
         public static Player player;
         public static Asteroid asteroid;
 
+        public static bool waveEditorIsRunning;
+
         public static double NextDouble(this Random random, double minValue, double maxValue)
         {
             return random.NextDouble() * (maxValue - minValue) + minValue;

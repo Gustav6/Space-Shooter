@@ -15,7 +15,10 @@ namespace Space_Shooter
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 
             InBounds();
-            DealContactDamage(gameTime, contactDamage, this);
+            if (!Data.waveEditorIsRunning)
+            {
+                DealContactDamage(gameTime, contactDamage, this);
+            }
             base.Update(gameTime);
         }
 

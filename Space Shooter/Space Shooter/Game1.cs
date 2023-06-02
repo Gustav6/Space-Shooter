@@ -16,7 +16,7 @@ namespace Space_Shooter
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = Data.bufferWidth;
             graphics.PreferredBackBufferHeight = Data.bufferHeight;
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -28,6 +28,7 @@ namespace Space_Shooter
 
             base.Initialize();
 
+            Data.waveEditorIsRunning = false;
             Data.player = new Player(new Vector2(200, 500));
             Data.gameObjects.Add(Data.player);
             WaveManager.SpawnWave();

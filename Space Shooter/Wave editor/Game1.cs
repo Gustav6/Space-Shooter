@@ -16,8 +16,8 @@ namespace Wave_editor
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         private Texture2D tileTexture;
 
@@ -38,11 +38,11 @@ namespace Wave_editor
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = Space_Shooter.Data.bufferWidth;
-            _graphics.PreferredBackBufferHeight = Space_Shooter.Data.bufferHeight;
-            //_graphics.IsFullScreen = true;
-            _graphics.ApplyChanges();
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = Space_Shooter.Data.bufferWidth;
+            graphics.PreferredBackBufferHeight = Space_Shooter.Data.bufferHeight;
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -53,12 +53,14 @@ namespace Wave_editor
 
             TextureManager.LoadTextures(Content, GraphicsDevice);
 
+            Space_Shooter.Data.waveEditorIsRunning = true;
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Space_Shooter.TextureManager.LoadTextures(Content, GraphicsDevice);
 
@@ -323,33 +325,33 @@ namespace Wave_editor
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin();
+            spriteBatch.Begin();
 
             for (int x = 0; x < gameWidth; x++)
             {
                 for (int y = 0; y < gameHeight; y++)
                 {
-                    _spriteBatch.Draw(tileTexture, new Rectangle(x * tileSize, y * tileSize, tileSize, tileSize), Data.tileMap[x, y].hasGameObject ? Color.White : Color.Black);
+                    spriteBatch.Draw(tileTexture, new Rectangle(x * tileSize, y * tileSize, tileSize, tileSize), Data.tileMap[x, y].hasGameObject ? Color.White : Color.Black);
                 }
             }
 
             foreach (GameObject gameObjects in Space_Shooter.Data.gameObjects)
             {
-                gameObjects.Draw(_spriteBatch, Space_Shooter.TextureManager.font);
+                gameObjects.Draw(spriteBatch);
             }
 
-            _spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Current Wave: " + currentWave.ToString(), new Vector2(50, 50), Color.LightBlue);
+            spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Current Wave: " + currentWave.ToString(), new Vector2(50, 50), Color.LightBlue);
 
             switch (selectedGameObject)
             {
                 case 1:
-                    _spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.smallEnemyTexture], new Vector2(50, 800), Color.White);
+                    spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.smallEnemyTexture], new Vector2(50, 800), Color.White);
                     break;
                 case 2:
-                    _spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.mediumEnemyTexture], new Vector2(50, 800), Color.White);
+                    spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.mediumEnemyTexture], new Vector2(50, 800), Color.White);
                     break;
                 case 3:
-                    _spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.bigEnemyTexture], new Vector2(50, 800), Color.White);
+                    spriteBatch.Draw(Space_Shooter.Data.arrayOfTextures[(int)TextureType.bigEnemyTexture], new Vector2(50, 800), Color.White);
                     break;
                 default:
                     break;
@@ -357,12 +359,12 @@ namespace Wave_editor
 
             if (hasSaved)
             {
-                _spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Saved Wave", new Vector2(50, 100), Color.LightGreen);
+                spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Saved Wave", new Vector2(50, 100), Color.LightGreen);
             }
 
-            _spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Save: S  ,  Add Wave: +  ,  Change Ship: Arrow  Up, Down", new Vector2(200, 50), Color.White);
+            spriteBatch.DrawString(Space_Shooter.TextureManager.font, "Save: S  ,  Add Wave: +  ,  Change Ship: Arrow  Up, Down", new Vector2(200, 50), Color.White);
 
-            _spriteBatch.End();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

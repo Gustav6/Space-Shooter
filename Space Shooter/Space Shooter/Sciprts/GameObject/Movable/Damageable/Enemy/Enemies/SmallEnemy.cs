@@ -34,11 +34,14 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            Attack();
+            if (!Data.waveEditorIsRunning)
+            {
+                MoveAttack();
+            }
             base.Update(gameTime);
         }
 
-        public void Attack()
+        public void MoveAttack()
         {
             if (position.Y + 5 >= Data.player?.position.Y && position.Y - 5 <= Data.player?.position.Y)
             {

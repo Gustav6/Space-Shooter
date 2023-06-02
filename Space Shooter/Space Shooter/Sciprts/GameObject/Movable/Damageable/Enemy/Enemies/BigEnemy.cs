@@ -34,8 +34,11 @@ namespace Space_Shooter
 
         public override void Update(GameTime gameTime)
         {
-            Shield();
-            Shoot(gameTime);
+            if (!Data.waveEditorIsRunning)
+            {
+                Shield();
+                Shoot(gameTime);
+            }
             base.Update(gameTime);
         }
 
